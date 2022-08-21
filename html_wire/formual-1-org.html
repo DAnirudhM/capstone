@@ -1,93 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formula-1</title>
-    <link rel="icon" type="image/x-icon" href="https://www.formula1.com/favicon.ico">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.formula1.com/favicon.ico"
+    />
     <style>
-        ul.breadcrumb {
-            padding: 10px 16px;
-            list-style: none;
-            background-color: #eee;
-        }
+      body {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
 
-        ul.breadcrumb li {
-            display: inline;
-            font-size: 18px;
-        }
+      #orgContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: "Source Sans Pro", "VFSans", "Gill Sans MT", Calibri,
+          "Trebuchet MS", sans-serif;
+      }
 
-        ul.breadcrumb li+li:before {
-            padding: 8px;
-            color: black;
-            content: "/\00a0";
-        }
+      /*############### Header Section ###############*/
 
-        ul.breadcrumb li a {
-            color: #0275d8;
-            text-decoration: none;
-        }
+      #main-header {
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        order: 1;
+      }
 
-        ul.breadcrumb li a:hover {
-            color: #01447e;
-            text-decoration: underline;
-        }
+      #logo {
+        padding-bottom: 1rem;
+      }
 
-        .break {
-            clear: left;
-            height: 25px;
-            margin-top: 20px;
-            margin-right: 20px;
-            margin-bottom: 20px;
-            margin-left: 20px;
-        }
+      #main-header > div > h1 {
+        text-align: center;
+        color: red;
+      }
+
+      #main-nav > * {
+        flex: 1;
+        font-size: x-large;
+        color: black;
+        text-decoration: none;
+      }
+
+      #main-nav > *:not(:last-child) {
+        border-right: 1px solid black;
+        margin-right: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      #searchForm {
+        align-self: flex-end;
+        padding-bottom: 2rem;
+        padding-right: 1rem;
+      }
+
+      /*############### Main  ###############*/
+      #orgMain {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2rem;
+      }
+
+      #orgPicture {
+        margin: 1rem;
+      }
+
+      main > section {
+        border: solid white;
+        border-top-color: black;
+        justify-content: space-around;
+      }
+
+      #orgDescription {
+        order: 2;
+        display: flex;
+      }
+
+      #orgDescription > div > p {
+        color: gray;
+      }
+
+      #groupsInfo {
+        order: 3;
+        display: flex;
+        flex-direction: column;
+      }
+      #groupNav > ul {
+        justify-content: space-between;
+        background-color: #000;
+        overflow: auto;
+        white-space: nowrap;
+      }
+      #groupNav > ul > li {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+      }
+      #groupNav > ul > li:hover {
+        background-color: red;
+      }
+      #groupDetails {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      #groupDetails > img {
+        margin: 1rem;
+        width: auto;
+      }
+      #groupDetailsTable > caption {
+        text-align: left;
+        border: 0.1rem solid black;
+        margin-bottom: 0.1rem;
+        background-color: black;
+        color: white;
+      }
+      #groupDetailsTable {
+        border: 0.1rem;
+        width: 60%;
+      }
+      #groupMembersInfo {
+        order: 3;
+        border-top-color: white;
+        margin-top: 1rem;
+      }
+      #groupMembersTable {
+        border: 0.1rem;
+        width: 100%;
+      }
+      #groupMembersTable > caption {
+        text-align: left;
+        border: 0.1rem solid black;
+        margin-bottom: 0.1rem;
+        background-color: black;
+        color: white;
+      }
+      #groupMembersTable > tbody > tr > *,
+      #groupDetailsTable > tbody > tr > * {
+        border: 0.1rem solid black;
+        padding: 1.5rem;
+      }
+
+      /*############### Footer ###############*/
+
+      #main-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: solid white;
+        border-top-color: black;
+        order: 4;
+      }
+
+      #footer-copyright {
+        flex: 10;
+      }
+
+      .footer-privacy {
+        flex: 0.9;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <header>
-        <picture style="display: inline;float: left;">
-            <img src="https://via.placeholder.com/80" alt="Logo">
-        </picture>
-
-        <div style="float: center;">
-            <h3>Formula-1</h3>
+  <body>
+    <div id="orgContainer">
+      <header id="main-header">
+        <img
+          id="logo"
+          src="https://via.placeholder.com/100"
+          alt="Logo"
+          onclick="location.href='/html_wire/css-2.html'"
+        />
+        <div>
+          <nav id="main-nav">
+            <a href="/html_wire/formual-1-org.html">F-1</a>
+            <a href="/html_wire/formual-1-org.html">F-2</a>
+            <a href="/html_wire/formual-1-org.html">F-3</a>
+            <a href="/html_wire/formual-1-org.html">F-E</a>
+            <a href="/html_wire/formual-1-org.html">Moto GP</a>
+          </nav>
+          <h1>Formula - 1</h1>
         </div>
+        <form id="searchForm">
+          <input type="text" placeholder="Search" />
+        </form>
+      </header>
+      <main id="orgMain">
+        <section id="orgDescription">
+          <div>
+            <h2>Formula - 1</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos neque
+              cumque porro soluta cum! At, ipsa sequi qui et quo suscipit vel
+              iste debitis adipisci, maxime, fugit placeat tenetur? Tenetur!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Exercitationem, laborum. Voluptas deserunt, quibusdam quo officia
+              expedita id aperiam, labore eveniet reiciendis cupiditate
+              exercitationem? Aut officia nobis, architecto officiis tenetur
+              eligendi.
+            </p>
+          </div>
+          <img
+            id="orgPicture"
+            src="https://via.placeholder.com/700x400"
+            alt="Logo"
+          />
+        </section>
+        <section id="groupsInfo">
+          <div id="groupNav">
+            <ul>
+              <li>RedBull</li>
+              <li>Ferrari</li>
+              <li>Mercedes</li>
+              <li>Apline</li>
+              <li>McLaren</li>
+              <li>Alpha Romeo</li>
+              <li>Haas</li>
+              <li>Alpha Tauri</li>
+              <li>Aston Martin</li>
+              <li>Williams</li>
 
-    </header>
-    <div class="break"></div>
-    <main>
-        <!-- Bread Crumb Section -->
-        <section>
-            <ul class="breadcrumb">
-                <li><a href="/html_wire/landingPage.html">Home</a></li>
-                <li>F1</li>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
             </ul>
+          </div>
+          <div id="groupDetails">
+            <img
+              id="orgPicture"
+              src="https://via.placeholder.com/200"
+              alt="Logo"
+            />
+            <table id="groupDetailsTable">
+              <caption>
+                Team Details
+              </caption>
+              <tbody>
+                <tr>
+                  <td>R1A</td>
+                  <td>R1B</td>
+                  <td>R1C</td>
+                </tr>
+                <tr>
+                  <td>R2A</td>
+                  <td>R2B</td>
+                  <td>R2C</td>
+                </tr>
+                <tr>
+                  <td>R3A</td>
+                  <td>R3B</td>
+                  <td>R3C</td>
+                </tr>
+                <tr>
+                  <td>R4A</td>
+                  <td>R4B</td>
+                  <td>R4C</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
-        <!-- Description section -->
-        <section id="section-one" style="display: inline;">
-            <artice style=" float: left;">
-                <h2>Racing is in DNA</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eos neque cumque porro soluta cum! At, ipsa sequi qui
-                    et quo suscipit vel iste debitis adipisci, maxime,
-                    fugit placeat tenetur? Tenetur!</p>
-            </artice>
-            <aside style="float: right;">
-                <picture style="display: inline;">
-                    <img src="https://via.placeholder.com/140" alt="Logo">
-                </picture>
-            </aside>
+        <section id="groupMembersInfo">
+          <table id="groupMembersTable">
+            <caption>
+              Team Members
+            </caption>
+            <tbody>
+              <tr>
+                <td>R1A</td>
+                <td>R1B</td>
+                <td>R1C</td>
+                <td>R1A</td>
+                <td>R1B</td>
+                <td>R1C</td>
+              </tr>
+              <tr>
+                <td>R1A</td>
+                <td>R1B</td>
+                <td>R1C</td>
+                <td>R1A</td>
+                <td>R1B</td>
+                <td>R1C</td>
+              </tr>
+              <tr>
+                <td>R3A</td>
+                <td>R3B</td>
+                <td>R3C</td>
+                <td>R3A</td>
+                <td>R3B</td>
+                <td>R3C</td>
+              </tr>
+              <tr>
+                <td>R4A</td>
+                <td>R4B</td>
+                <td>R4C</td>
+                <td>R4A</td>
+                <td>R4B</td>
+                <td>R4C</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
-        <!-- section to view groups -->
-        <!-- section to view members-->
-        <div class="break"></div>
-
-
-    </main>
-    <footer></footer>
-</body>
-
+      </main>
+      <footer id="main-footer">
+        <small id="footer-copyright"
+          >This site and all content is owned &copy; Anirudh Maanvi
+          Dontha.</small
+        >
+        <h6 class="footer-privacy">Privacy Policy</h6>
+        <h6 class="footer-privacy">California Policy</h6>
+      </footer>
+    </div>
+  </body>
 </html>
