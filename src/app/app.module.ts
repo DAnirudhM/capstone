@@ -6,18 +6,21 @@ import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
+import { HeaderComponent } from './header/header.component';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
     MenuModule,
-    BreadcrumbModule
-    
+    BreadcrumbModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
