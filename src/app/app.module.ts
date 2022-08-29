@@ -8,11 +8,15 @@ import { MenuModule } from 'primeng/menu';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import { HeaderComponent } from './header/header.component';
 import {InputTextModule} from 'primeng/inputtext';
+import { FooterComponent } from './footer/footer.component';
+import { DescriptionComponent } from './description/description.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,

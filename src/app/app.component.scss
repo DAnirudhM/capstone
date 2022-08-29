@@ -16,9 +16,9 @@
 }
 
 #main-nav>*:not(:last-child) {
-    border-right: 1px solid black;
-    margin-right: 1.5rem;
-    padding-right: 1.5rem;
+    border-right: 3px solid grey;
+    margin-right: 3.5rem;
+    padding-right: 3.5rem;
 }
 
 .header-footer>div>h1 {
@@ -26,3 +26,14 @@
     color: red;
     text-shadow: 1px 1px black;
 }
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid white;
+    border-top: 3px solid #000;;
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+  }
