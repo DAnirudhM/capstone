@@ -1,0 +1,9 @@
+<section id="carousel">
+    <p-carousel [value]="imagesPath" styleClass="custom-carousel" [numVisible]="4" [numScroll]="1" [circular]="true"
+        [autoplayInterval]="3000">
+        <!-- [responsiveOptions]="responsiveOptions" -->
+        <ng-template let-group pTemplate="image">
+            <img src="{{group}}" class="group-image" />
+        </ng-template>
+    </p-carousel>
+</section>

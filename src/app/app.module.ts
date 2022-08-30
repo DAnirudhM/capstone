@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {CarouselModule} from 'primeng/carousel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,13 +11,15 @@ import { HeaderComponent } from './header/header.component';
 import {InputTextModule} from 'primeng/inputtext';
 import { FooterComponent } from './footer/footer.component';
 import { DescriptionComponent } from './description/description.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { DescriptionComponent } from './description/description.component';
     ButtonModule,
     MenuModule,
     BreadcrumbModule,
-    InputTextModule
+    InputTextModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

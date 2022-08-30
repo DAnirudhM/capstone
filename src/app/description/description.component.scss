@@ -1,8 +1,15 @@
 section {
   display: flex;
   flex-direction: row;
+  margin: 1rem;
 
-  div > p {
+  div>p {
     color: gray;
+  }
+
+  img {
+    width: 700px;
+    height: 350px;
+    margin-left: 5rem;
   }
 }
