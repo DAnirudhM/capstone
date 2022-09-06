@@ -13,14 +13,16 @@ export class AppComponent {
 
   ngOnInit() {
     this.items = [
-        {label:'Categories'},
-        {label:'Sports'},
-        {label:'Football'},
-        {label:'Countries'},
-        {label:'Spain'},
-        {label:'F.C. Barcelona'},
-        {label:'Squad'},
-        {label:'Lionel Messi', url: 'https://en.wikipedia.org/wiki/Lionel_Messi'}
+        {label:'RedBull'},
+        {label:'Ferrari'},
+        {label:'Mercedes'},
+        {label:'Alpine'},
+        {label:'McLaren'},
+        {label:'Alpha Romeo'},
+        {label:'Haas'},
+        {label:'Alpha Tauri'},
+        {label:'Aston Martin'},
+        {label:'Williams'}
     ];
 }
 }

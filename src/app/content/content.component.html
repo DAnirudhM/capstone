@@ -1,0 +1,37 @@
+<p-toolbar styleClass="p-mb-4">
+  <ng-template pTemplate="right">
+    <button
+      pButton
+      pRipple
+      label="New"
+      icon="pi pi-plus"
+      class="p-button-success mr-2"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Delete"
+      icon="pi pi-trash"
+      class="p-button-danger"
+    ></button>
+  </ng-template>
+</p-toolbar>
+
+<p-table [value]="group" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Group Name</th>
+      <th>Nasponsor Name</th>
+      <th>Sponsor Phone</th>
+      <th>Sponsor Email</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-group>
+    <tr>
+      <td>{{ group.groupName }}</td>
+      <td>{{ group.sponsorName }}</td>
+      <td>{{ group.sponsorPhone }}</td>
+      <td>{{ group.sponsorEmail }}</td>
+    </tr>
+  </ng-template>
+</p-table>

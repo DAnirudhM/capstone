@@ -12,6 +12,10 @@ import {InputTextModule} from 'primeng/inputtext';
 import { FooterComponent } from './footer/footer.component';
 import { DescriptionComponent } from './description/description.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import {TabMenuModule} from 'primeng/tabmenu';
+import { ContentComponent } from './content/content.component';
+import {TableModule} from 'primeng/table';
+import {ToolbarModule} from 'primeng/toolbar';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     HeaderComponent,
     FooterComponent,
     DescriptionComponent,
-    CarouselComponent
+    CarouselComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,10 @@ import { CarouselComponent } from './carousel/carousel.component';
     MenuModule,
     BreadcrumbModule,
     InputTextModule,
-    CarouselModule
+    CarouselModule,
+    TabMenuModule,
+    TableModule,
+    ToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
