@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Group } from '../model/group.model';
+import { Groups } from 'src/app/models/groups.model';
 
 @Component({
   selector: 'app-content',
@@ -7,12 +7,12 @@ import { Group } from '../model/group.model';
   styleUrls: ['./content.component.scss'],
 })
 export class ContentComponent implements OnInit {
-  group!: Group[];
+  groups!: Groups[];
 
   constructor() {}
 
   ngOnInit(): void {
-    this.group = [
+    this.groups = [
       {
         groupName: 'string',
         sponsorName: 'string',

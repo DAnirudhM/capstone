@@ -7,15 +7,16 @@ import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './components/header/header.component';
 import {InputTextModule} from 'primeng/inputtext';
-import { FooterComponent } from './footer/footer.component';
-import { DescriptionComponent } from './description/description.component';
-import { CarouselComponent } from './carousel/carousel.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { DescriptionComponent } from './components/description/description.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 import {TabMenuModule} from 'primeng/tabmenu';
-import { ContentComponent } from './content/content.component';
+import { ContentComponent } from './components/content/content.component';
 import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {ToolbarModule} from 'primeng/toolbar';
     CarouselModule,
     TabMenuModule,
     TableModule,
-    ToolbarModule
+    ToolbarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

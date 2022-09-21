@@ -1,5 +1,5 @@
 <header class="header-footer">
-    <img id="logo" src="../../assets/pictures/icons8-motorbike-helmet-100.png"  alt="{{altBrandLogo}}"
+    <img id="logo" src="../../assets/pictures/icons8-motorbike-helmet-100.png" alt="{{altBrandLogo}}"
         onclick="location.href='/html_wire/css-2.html'" />
     <div id="header-middle-section">
         <nav id="main-nav">
@@ -8,6 +8,11 @@
             <a href="/html_wire/formual-1-org.html">F-3</a>
             <a href="/html_wire/formual-1-org.html">F-E</a>
             <a href="/html_wire/formual-1-org.html">Moto GP</a>
+
+            <a *ngFor="let org of currentOrganizations" >
+                {{ org.organizationName  }}
+            </a>
+            
         </nav>
         <h1>{{headerTitle}}</h1>
     </div>
