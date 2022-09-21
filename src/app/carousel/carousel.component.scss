@@ -1,10 +1,28 @@
-#carousel{
-    //margin: 2rem;
-     border-top: 3px solid black;
-     padding-top: 3rem;
+#carousel {
+    margin: 2rem;
+    border-top: 3px solid black;
+    padding-top: 3rem;
+
+    .organization {
+        .org-image {
+            width: 95%;
+            height: 50%;
+            margin-bottom: 3;
+        }
+        .org-name {
+            text-align: center;
+        }
+    }
 }
-.group-image{
-    width: 370px;
-    height: 235px;
-    margin-bottom: 3;
+
+
+:host ::ng-deep {
+
+    .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+        background-color: red;
+    }
+
+    .p-carousel .p-carousel-indicators .p-carousel-indicator button {
+        background-color: black;
+    }
 }

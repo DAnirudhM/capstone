@@ -76,7 +76,8 @@
               "browserTarget": "capstone-f1:build:production"
             },
             "development": {
-              "browserTarget": "capstone-f1:build:development"
+              "browserTarget": "capstone-f1:build:development",
+              "port": 9090
             }
           },
           "defaultConfiguration": "development"

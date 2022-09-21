@@ -1,9 +1,11 @@
 <section id="carousel">
-    <p-carousel [value]="imagesPath" styleClass="custom-carousel" [numVisible]="4" [numScroll]="1" [circular]="true"
-        [autoplayInterval]="3000">
-        <!-- [responsiveOptions]="responsiveOptions" -->
-        <ng-template let-group pTemplate="image">
-            <img src="{{group}}" class="group-image" />
+    <p-carousel [value]="imagesPath" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true"
+        [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+        <ng-template let-org pTemplate="image">
+            <div class="organization">
+                <img src="{{org}}" class="org-image" />
+                <h4 class="org-name">1</h4>
+            </div>
         </ng-template>
     </p-carousel>
 </section>
