@@ -9,6 +9,7 @@ import { OrganizationsService } from 'src/app/services/organizations.service';
 export class CarouselComponent implements OnInit {
 
   imagesPath!: string[];
+  imagesInfo!: {imagePath:string,routeLink:string}[];
   responsiveOptions: any;
 
   constructor(private organizationsService: OrganizationsService) {
@@ -45,6 +46,28 @@ export class CarouselComponent implements OnInit {
       'assets/pictures/mainPage/logo_f3.jpeg',
       'assets/pictures/mainPage/logo_fe.png',
       'assets/pictures/mainPage/logo_mgp.jpeg',
+    ];
+
+    this.imagesInfo = [
+      {
+        imagePath:'assets/pictures/mainPage/logo_f1.jpg',
+        routeLink:'f-1'
+      },
+      {
+        imagePath:'assets/pictures/mainPage/logo_f2.jpeg',
+        routeLink:'f-2'
+      },{
+        imagePath:'assets/pictures/mainPage/logo_f3.jpeg',
+        routeLink:'f-3'
+      },
+      {
+        imagePath:'assets/pictures/mainPage/logo_fe.png',
+        routeLink:'f-e'
+      },
+      {
+        imagePath:'assets/pictures/mainPage/logo_mgp.jpeg',
+        routeLink:'motogp'
+      }
     ];
   }
 }

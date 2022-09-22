@@ -1,9 +1,9 @@
 <section id="carousel">
-    <p-carousel [value]="imagesPath" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true"
+    <p-carousel [value]="imagesInfo" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true"
         [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
-        <ng-template let-org pTemplate="image">
+        <ng-template let-img pTemplate="image">
             <div class="organization">
-                <img src="{{org}}" class="org-image" routerLink="f-1"/>
+                <img src="{{img.imagePath}}" class="org-image" routerLink="{{img.routeLink}}"/>
             </div>
         </ng-template>
     </p-carousel>
