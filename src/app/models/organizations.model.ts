@@ -1,13 +1,13 @@
 export class Organizations {
-    organizationName: string;
-    organizationId: string;
-    description: string;
+    OrganizationName: string;
+    OrganizationId: string;
+    Description: string;
 
     constructor(organizationName: string,
         organizationId: string,
         description: string) {
-        this.organizationName = organizationName;
-        this.organizationId = organizationId;
-        this.description = description;
+        this.OrganizationName = organizationName;
+        this.OrganizationId = organizationId;
+        this.Description = description;
     }
 }
