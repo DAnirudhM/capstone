@@ -17,6 +17,10 @@ import { ContentComponent } from './components/content/content.component';
 import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
 import { HttpClientModule } from '@angular/common/http';
+import { RemoveWhiteSpacePipe } from './pipe/remove-white-space-pipe.class';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     DescriptionComponent,
     CarouselComponent,
-    ContentComponent
+    ContentComponent,
+    RemoveWhiteSpacePipe,
+    PageNotFoundComponent,
+    HomeComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

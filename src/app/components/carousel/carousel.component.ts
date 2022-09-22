@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrganizationsService } from 'src/app/services/organizations.service';
 
 @Component({
   selector: 'app-carousel',
@@ -10,7 +11,14 @@ export class CarouselComponent implements OnInit {
   imagesPath!: string[];
   responsiveOptions: any;
 
-  constructor() {
+  constructor(private organizationsService: OrganizationsService) {
+    this.setResponsiveness();
+    this.setImagesPaths();
+  }
+
+  ngOnInit(): void {}
+
+  setResponsiveness(): void {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -30,16 +38,13 @@ export class CarouselComponent implements OnInit {
     ];
   }
 
-  ngOnInit(): void {
-
+  setImagesPaths() {
     this.imagesPath = [
       'assets/pictures/mainPage/logo_f1.jpg',
       'assets/pictures/mainPage/logo_f2.jpeg',
       'assets/pictures/mainPage/logo_f3.jpeg',
       'assets/pictures/mainPage/logo_fe.png',
       'assets/pictures/mainPage/logo_mgp.jpeg',
-      
     ];
   }
-
 }

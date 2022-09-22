@@ -22,10 +22,10 @@ export class HeaderComponent implements OnInit {
       error: (error: any) => handleError(error),
       complete: () => console.log(this.currentOrganizations)
     });
-   }
+  }
 
   ngOnInit(): void {
-   console.log(this.currentOrganizations);
+    console.log(this.currentOrganizations);
   }
 
 }
