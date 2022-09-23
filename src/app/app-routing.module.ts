@@ -14,7 +14,6 @@ const fallbackRoute: Route = {
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  // { path: 'motorsport', component: HomeComponent },
   { path: 'f-1', component: DetailsComponent },
   { path: 'f-2', component: DetailsComponent },
   { path: 'f-3', component: DetailsComponent },

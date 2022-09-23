@@ -10,22 +10,9 @@ import { OrganizationsService } from './services/organizations.service';
 })
 export class AppComponent implements OnInit {
   title = 'capstone-f1';
-  items: MenuItem[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.items = [
-      { label: 'RedBull' },
-      { label: 'Ferrari' },
-      { label: 'Mercedes' },
-      { label: 'Alpine' },
-      { label: 'McLaren' },
-      { label: 'Alpha Romeo' },
-      { label: 'Haas' },
-      { label: 'Alpha Tauri' },
-      { label: 'Aston Martin' },
-      { label: 'Williams' }
-    ];
   }
 }

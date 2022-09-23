@@ -1,27 +1,27 @@
 [
 	{
 		"OrganizationName": "F-1",
-		"OrganizationId": "Org1",
+		"OrganizationId": "1",
 		"Description": "This is organization 1"
 	},
 	{
 		"OrganizationName": "F-2",
-		"OrganizationId": "Org2",
+		"OrganizationId": "2",
 		"Description": "This is organization 2"
     },
     {
 		"OrganizationName": "F-3",
-		"OrganizationId": "Org3",
+		"OrganizationId": "3",
 		"Description": "This is organization 3" 
 	},
 	{
 		"OrganizationName": "F-E",
-		"OrganizationId": "Org4",
+		"OrganizationId": "4",
 		"Description": "This is organization 4" 
 	},
 	{
 		"OrganizationName": "Moto GP",
-		"OrganizationId": "Org5",
+		"OrganizationId": "5",
 		"Description": "This is organization 5"
 	}
 ]

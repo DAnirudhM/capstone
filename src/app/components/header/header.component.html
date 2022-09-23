@@ -4,7 +4,8 @@
     <div id="header-middle-section">
         <nav id="main-nav">
             <a *ngFor="let org of currentOrganizations" routerLink="{{ org.OrganizationName | lowercase | removewhitespaces }}"
-                routerLinkActive="active"> {{ org.OrganizationName }} </a>
+            [state]="{currentOrganization: org}"
+            routerLinkActive="active"> {{ org.OrganizationName }} </a>
         </nav>
         <h1>{{headerTitle}}</h1>
     </div>

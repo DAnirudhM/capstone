@@ -1,7 +1,35 @@
 [
   {
     "GroupId": 1,
-    "GroupName": "United Front",
+    "GroupName": "RedBull",
+    "OrganizationName": "F-1",
+    "SponsorName": "Natalie Rachelle",
+    "SponsorPhone": "555-000-0000",
+    "SponsorEmail": "nat214@gmail.com",
+    "MaxGroupSize": 7,
+    "Members": [
+      {
+        "MemberId": 2,
+        "MemberEmail": "theaterkid0625@gmail.com",
+        "MemberName": "Ezra Aiden",
+        "MemberPhone": "555-000-0002"
+      },
+      {
+        "MemberId": 4,
+        "MemberEmail": "aslan_the_great@gmail.com",
+        "MemberName": "Elisha Aslan",
+        "MemberPhone": "555-000-0003"
+      },
+      {
+        "MemberId": 6,
+        "MemberEmail": "susa2007@gmail.com",
+        "MemberName": "Siddalee Grace",
+        "MemberPhone": "555-000-0020"
+      }
+    ]
+  },{
+    "GroupId": 1,
+    "GroupName": "Ferrari",
     "OrganizationName": "F-1",
     "SponsorName": "Natalie Rachelle",
     "SponsorPhone": "555-000-0000",

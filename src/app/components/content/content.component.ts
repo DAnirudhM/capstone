@@ -14,10 +14,10 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
     this.groups = [
       {
-        groupName: 'string',
-        sponsorName: 'string',
-        sponsorPhone: 'string',
-        sponsorEmail: 'string',
+        GroupName: 'string',
+        SponsorName: 'string',
+        SponsorPhone: 'string',
+        SponsorEmail: 'string',
       },
     ];
   }

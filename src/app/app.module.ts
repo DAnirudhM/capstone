@@ -21,6 +21,7 @@ import { RemoveWhiteSpacePipe } from './pipe/remove-white-space-pipe.class';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { DetailsComponent } from './components/details/details.component';
+import { TabMenuComponent } from './components/tab-menu/tab-menu.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DetailsComponent } from './components/details/details.component';
     RemoveWhiteSpacePipe,
     PageNotFoundComponent,
     HomeComponent,
-    DetailsComponent
+    DetailsComponent,
+    TabMenuComponent
   ],
   imports: [
     BrowserModule,
