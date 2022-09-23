@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { map, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 import { Groups } from '../models/groups.model';
 import { Organizations } from '../models/organizations.model';
 
@@ -10,7 +10,8 @@ import { Organizations } from '../models/organizations.model';
 })
 export class GroupsService {
 
-  private groups: Subject<Groups[]> = new Subject<Groups[]>();
+  private group!:Groups[];
+  private groups: BehaviorSubject<Groups[]> = new BehaviorSubject<Groups[]>(this.group);
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +32,11 @@ export class GroupsService {
 
   setGroups(data: Groups[]): void {
     this.groups.next(data);
+  }
+
+
+  addGroup(group:Groups) : Observable<Groups>{
+    return this.http.post<Groups>(`http://127.0.0.1:8082/api/groups/`,group);
   }
 
 

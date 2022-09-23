@@ -22,6 +22,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { HomeComponent } from './components/home/home.component';
 import { DetailsComponent } from './components/details/details.component';
 import { TabMenuComponent } from './components/tab-menu/tab-menu.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import {DialogModule} from 'primeng/dialog';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {SliderModule} from 'primeng/slider';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,8 @@ import { TabMenuComponent } from './components/tab-menu/tab-menu.component';
     PageNotFoundComponent,
     HomeComponent,
     DetailsComponent,
-    TabMenuComponent
+    TabMenuComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,13 @@ import { TabMenuComponent } from './components/tab-menu/tab-menu.component';
     TabMenuModule,
     TableModule,
     ToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogModule,
+    DynamicDialogModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
