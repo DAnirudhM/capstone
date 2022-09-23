@@ -6,7 +6,7 @@
     "SponsorName": "Natalie Rachelle",
     "SponsorPhone": "555-000-0000",
     "SponsorEmail": "nat214@gmail.com",
-  "MaxGroupSize": 7,
+    "MaxGroupSize": 7,
     "Members": [
       {
         "MemberId": 2,
@@ -27,8 +27,9 @@
         "MemberPhone": "555-000-0020"
       }
     ]
-  },{
-    "GroupId": 1,
+  },
+  {
+    "GroupId": 2,
     "GroupName": "Ferrari",
     "OrganizationName": "F-1",
     "SponsorName": "Natalie Rachelle",
@@ -41,18 +42,40 @@
         "MemberEmail": "theaterkid0625@gmail.com",
         "MemberName": "Ezra Aiden",
         "MemberPhone": "555-000-0002"
-      },
+      }
+    ]
+  },
+  {
+    "GroupId": 3,
+    "GroupName": "Mercedes",
+    "OrganizationName": "F-1",
+    "SponsorName": "Natalie Rachelle",
+    "SponsorPhone": "555-000-0000",
+    "SponsorEmail": "nat214@gmail.com",
+    "MaxGroupSize": 7,
+    "Members": [
       {
-        "MemberId": 4,
-        "MemberEmail": "aslan_the_great@gmail.com",
-        "MemberName": "Elisha Aslan",
-        "MemberPhone": "555-000-0003"
-      },
+        "MemberId": 2,
+        "MemberEmail": "theaterkid0625@gmail.com",
+        "MemberName": "Ezra Aiden",
+        "MemberPhone": "555-000-0002"
+      }
+    ]
+  },
+  {
+    "GroupId": 4,
+    "GroupName": "Alipne",
+    "OrganizationName": "F-1",
+    "SponsorName": "Natalie Rachelle",
+    "SponsorPhone": "555-000-0000",
+    "SponsorEmail": "nat214@gmail.com",
+    "MaxGroupSize": 7,
+    "Members": [
       {
-        "MemberId": 6,
-        "MemberEmail": "susa2007@gmail.com",
-        "MemberName": "Siddalee Grace",
-        "MemberPhone": "555-000-0020"
+        "MemberId": 2,
+        "MemberEmail": "theaterkid0625@gmail.com",
+        "MemberName": "Ezra Aiden",
+        "MemberPhone": "555-000-0002"
       }
     ]
   },

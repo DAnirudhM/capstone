@@ -1,4 +1,6 @@
 <div id="menubar">
-    <p-tabMenu class= "m1" [model]="groups" [activeItem]="groups[0]" [scrollable]=true></p-tabMenu>
-    <button class="pi pi-plus"></button>
+    <p-tabMenu class= "m1" [model]="groups" [activeItem]="groups[tabActiveIndex]" [scrollable]=true
+    onselect=""
+    ></p-tabMenu>
+    <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success m-2"></button>
 </div>

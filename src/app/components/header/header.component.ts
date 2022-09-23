@@ -17,6 +17,10 @@ export class HeaderComponent implements OnInit {
   string: string = 'sampleurl';
 
   constructor(private organizationsService: OrganizationsService) {
+   
+  }
+
+  ngOnInit(): void {
     this.organizationsService.getOrganizations().subscribe({
       next: (value: Organizations[]) => {
         this.currentOrganizations= value;
@@ -26,10 +30,6 @@ export class HeaderComponent implements OnInit {
       error: (error: any) => handleError(error),
       complete: () => void(0)
     });
-  }
-
-  ngOnInit(): void {
-    console.log(this.currentOrganizations);
   }
 
 }

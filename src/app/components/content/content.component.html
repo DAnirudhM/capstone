@@ -1,38 +1,58 @@
-<app-tab-menu></app-tab-menu>
-<!-- <p-toolbar styleClass="p-mb-4">
-  <ng-template pTemplate="right">
-    <button
-      pButton
-      pRipple
-      label="New"
-      icon="pi pi-plus"
-      class="p-button-success mr-2"
-    ></button>
-    <button
-      pButton
-      pRipple
-      label="Delete"
-      icon="pi pi-trash"
-      class="p-button-danger"
-    ></button>
+<app-tab-menu (selectedGroup)="onGroupSelect($event)"></app-tab-menu>
+<p-table [value]="selectedGroup" responsiveLayout="scroll">
+  <ng-template pTemplate="caption">
+    <h5>Team Details</h5>
+    <span class="p-input-icon-left">
+      <button pButton pRipple label="" icon="pi pi-pencil" class="p-button-success mr-2"></button>
+      <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger mr-2"></button>
+    </span>
   </ng-template>
-</p-toolbar> -->
 
-<!-- <p-table [value]="groups" responsiveLayout="scroll">
   <ng-template pTemplate="header">
     <tr>
-      <th>Group Name</th>
-      <th>Nasponsor Name</th>
+      <th>Team Name</th>
+      <th>Sponsor Name</th>
       <th>Sponsor Phone</th>
       <th>Sponsor Email</th>
     </tr>
   </ng-template>
+
   <ng-template pTemplate="body" let-group>
     <tr>
-      <td>{{ group.groupName }}</td>
-      <td>{{ group.sponsorName }}</td>
-      <td>{{ group.sponsorPhone }}</td>
-      <td>{{ group.sponsorEmail }}</td>
+      <td>{{ group.GroupName }}</td>
+      <td>{{ group.SponsorName }}</td>
+      <td>{{ group.SponsorPhone }}</td>
+      <td>{{ group.SponsorEmail }}</td>
     </tr>
   </ng-template>
-</p-table> -->
+</p-table>
+
+<p-table [value]="availableMembers" responsiveLayout="scroll">
+  <ng-template pTemplate="caption">
+    <h5>Team Members</h5>
+    <span class="p-input-icon-left">
+      <button pButton pRipple label="" icon="pi pi-pencil" class="p-button-success mr-2"></button>
+      <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger mr-2"></button>
+    </span>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-member>
+    <tr>
+      <td>{{ member.MemberName }}</td>
+      <td>{{ member.MemberEmail }}</td>
+      <td>{{ member.MemberPhone }}</td>
+      <td> <button pButton pRipple label="" icon="pi pi-pencil" class="p-button-success mr-2"></button> </td>
+      <td> <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger mr-2"></button> </td>
+    </tr>
+  </ng-template>
+</p-table>

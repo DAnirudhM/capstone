@@ -1,0 +1,35 @@
+.p-button{
+    height: 0rem;
+}
+
+.p-button.p-button-success {
+    background: orange;
+    border: orange;
+}
+
+.p-button.p-button-success:hover {
+    background: darkgoldenrod;
+}
+
+.p-button.p-button-icon-only{
+    width: 2rem;
+    color: black;
+}
+
+:host ::ng-deep {
+    .p-datatable .p-datatable-header {
+        padding: 0.1rem 0.1rem;
+        background-color: black;
+        height: 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;      
+
+        h5{
+            color: white;
+        }
+        
+    }
+
+
+}
