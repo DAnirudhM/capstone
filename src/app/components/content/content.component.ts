@@ -13,7 +13,7 @@ export class ContentComponent implements OnInit {
   availableGroups!: Groups[];
   selectedGroup!: Groups[];
   availableMembers!: Members[];
-  
+
 
 
   constructor(private groupsService: GroupsService) {
@@ -36,7 +36,7 @@ export class ContentComponent implements OnInit {
   }
 
   getSelectedGroup(groupName: string): void {
-    
+
     const selectGrp = this.availableGroups.find(group => group.GroupName === groupName) ?? {
       "GroupId": 0,
       "GroupName": "Unavailable",
@@ -54,6 +54,13 @@ export class ContentComponent implements OnInit {
     this.availableMembers = selectGrp.Members;
 
   }
+
+  onTeamDetailsEdit() {
+    console.log('Team details edit !!');
+    
+
+  }
+
 }
 
 

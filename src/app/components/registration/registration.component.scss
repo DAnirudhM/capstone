@@ -1,0 +1,14 @@
+:host ::ng-deep {
+    .p-slider .p-slider-range {
+        background-color: red;
+        border: red;
+    }
+
+    .p-slider .p-slider-handle{
+        border-color: red;
+    }
+
+    .p-slider:not(.p-disabled) .p-slider-handle:hover{
+        background-color: black;
+    }
+}

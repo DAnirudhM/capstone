@@ -3,7 +3,7 @@
   <ng-template pTemplate="caption">
     <h5>Team Details</h5>
     <span class="p-input-icon-left">
-      <button pButton pRipple label="" icon="pi pi-pencil" class="p-button-warning mr-2"></button>
+      <button pButton pRipple (click) = "onTeamDetailsEdit()" label="" icon="pi pi-pencil" class="p-button-warning mr-2"></button>
       <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger mr-2"></button>
     </span>
   </ng-template>
@@ -31,8 +31,7 @@
   <ng-template pTemplate="caption">
     <h5>Team Members</h5>
     <span>
-      <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success m-2"
-    ></button>
+      <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success m-2"></button>
     </span>
   </ng-template>
 

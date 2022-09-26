@@ -82,8 +82,6 @@ export class RegistrationComponent implements OnInit {
     }
 
     return groupToAdd;
-
-
   }
 
 }
