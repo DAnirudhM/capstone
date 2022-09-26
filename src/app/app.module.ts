@@ -28,6 +28,7 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SliderModule} from 'primeng/slider';
+import { TeamRegistrationComponent } from './components/team-registration/team-registration.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {SliderModule} from 'primeng/slider';
     HomeComponent,
     DetailsComponent,
     TabMenuComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    TeamRegistrationComponent
   ],
   imports: [
     BrowserModule,

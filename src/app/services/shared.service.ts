@@ -33,9 +33,9 @@ export class SharedService {
       case '/f-3':
         return 'F-3';
       case '/f-e':
-        return 'F-4';
+        return 'F-E';
       case '/motogp':
-        return 'F-5';
+        return 'Moto GP';
       default:
         return '/';
     }

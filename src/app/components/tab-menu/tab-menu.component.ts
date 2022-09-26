@@ -79,6 +79,7 @@ export class TabMenuComponent implements OnInit {
   }
 
   getMenuItems(orgId: string): void {
+    console.log(orgId)
     this.groupsService.getGroupsByOrganization(orgId)
       .subscribe({
         next: (value: Groups[]) => {

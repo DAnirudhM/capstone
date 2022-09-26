@@ -1,1 +1,202 @@
-[{"GroupId":1,"GroupName":"Oracle Red Bull Racing","OrganizationName":"F-1","SponsorName":"Christian Horner","SponsorPhone":"0987654321","SponsorEmail":"horner@gmail.com","MaxGroupSize":3,"Members":[{"MemberId":1,"MemberEmail":"MaxVerstappen@redbull.com","MemberName":"Max Verstappen","MemberPhone":"555-000-0002"},{"MemberId":2,"MemberEmail":"SergioPerez@rebull.com","MemberName":"Sergio Perez","MemberPhone":"555-000-0003"},{"MemberId":3,"MemberEmail":"susa2007@gmail.com","MemberName":"Siddalee Grace","MemberPhone":"555-000-0020"}]},{"GroupId":2,"GroupName":"Scuderia Ferrari","OrganizationName":"F-1","SponsorName":"Mattia Binotto","SponsorPhone":"555-000-0000","SponsorEmail":"mattbin@ferrari.com","MaxGroupSize":7,"Members":[{"MemberId":4,"MemberEmail":"theaterkid0625@gmail.com","MemberName":"Ezra Aiden","MemberPhone":"555-000-0002"}]},{"GroupId":3,"GroupName":"Mercedes","OrganizationName":"F-1","SponsorName":"Natalie Rachelle","SponsorPhone":"1234567890","SponsorEmail":"nat214@gmail.com","MaxGroupSize":2,"Members":[{"MemberId":5,"MemberEmail":"theaterkid0625@gmail.com","MemberName":"Ezra Aiden","MemberPhone":"555-000-0002"}]},{"GroupId":4,"GroupName":"Alipne","OrganizationName":"F-1","SponsorName":"Natalie Rachelle","SponsorPhone":"555-000-0000","SponsorEmail":"nat214@gmail.com","MaxGroupSize":7,"Members":[{"MemberId":6,"MemberEmail":"theaterkid0625@gmail.com","MemberName":"Ezra Aiden","MemberPhone":"555-000-0002"}]},{"GroupId":2,"GroupName":"Warriors","OrganizationName":"F-2","SponsorName":"Brittany Ray","SponsorPhone":"555-000-0004","SponsorEmail":"brit805@aol.com","MaxGroupSize":7,"Members":[{"MemberId":7,"MemberEmail":"pursy1222@gmail.com","MemberName":"Pursalane Faye","MemberPhone":"555-000-0005"},{"MemberId":8,"MemberEmail":"thebro@gmail.com","MemberName":"Zephaniah Hughes","MemberPhone":"555-000-0006"}]},{"GroupId":3,"GroupName":"Strategy One","OrganizationName":"F-3","SponsorName":"Zachary Westly","SponsorPhone":"555-000-0012","SponsorEmail":"zwest90@gmail.com","MaxGroupSize":7,"Members":[{"MemberId":9,"MemberEmail":"ian_the_great@gmail.com","MemberName":"Ian Auston","MemberPhone":"555-000-0025"}]},{"GroupId":4,"GroupName":"testgroup","OrganizationName":"Organization One","SponsorName":"Kevin Ruse","SponsorPhone":"555-5555","SponsorEmail":"kevin@kevin.com","MaxGroupSize":1,"Members":[]},{"GroupId":5,"GroupName":"Mclaren","OrganizationName":"F-1","SponsorName":"blah","SponsorPhone":"1234567890","SponsorEmail":"mc@mc","MaxGroupSize":2,"Members":[]},{"GroupId":6,"GroupName":"Alfa Reomeo","OrganizationName":"F-1","SponsorName":"blah2","SponsorPhone":"1234567890","SponsorEmail":"alpha@alpha.com","MaxGroupSize":2,"Members":[]},{"GroupId":23,"GroupName":"1","OrganizationName":"F-4","SponsorName":"1","SponsorPhone":"1234567890","SponsorEmail":"123@123","MaxGroupSize":1,"Members":[]},{"GroupId":24,"GroupName":"124","OrganizationName":"F-4","SponsorName":"1231","SponsorPhone":"1242354576","SponsorEmail":"123124@dsg","MaxGroupSize":0,"Members":[]},{"GroupId":25,"GroupName":"McLaren","OrganizationName":"F-1","SponsorName":"blah","SponsorPhone":"1234567890","SponsorEmail":"dasghjd@dfhjk.com","MaxGroupSize":2,"Members":[]}]
+[
+    {
+        "GroupId": 1,
+        "GroupName": "Oracle Red Bull Racing",
+        "OrganizationName": "F-1",
+        "SponsorName": "Christian Horner",
+        "SponsorPhone": "0987654321",
+        "SponsorEmail": "horner@gmail.com",
+        "MaxGroupSize": 3,
+        "Members": [
+            {
+                "MemberId": 1,
+                "MemberEmail": "MaxVerstappen@redbull.com",
+                "MemberName": "Max Verstappen",
+                "MemberPhone": "555-000-0002"
+            },
+            {
+                "MemberId": 2,
+                "MemberEmail": "SergioPerez@rebull.com",
+                "MemberName": "Sergio Perez",
+                "MemberPhone": "555-000-0003"
+            },
+            {
+                "MemberId": 3,
+                "MemberEmail": "susa2007@gmail.com",
+                "MemberName": "Siddalee Grace",
+                "MemberPhone": "555-000-0020"
+            }
+        ]
+    },
+    {
+        "GroupId": 2,
+        "GroupName": "Scuderia Ferrari",
+        "OrganizationName": "F-1",
+        "SponsorName": "Mattia Binotto",
+        "SponsorPhone": "555-000-0000",
+        "SponsorEmail": "mattbin@ferrari.com",
+        "MaxGroupSize": 7,
+        "Members": [
+            {
+                "MemberId": 4,
+                "MemberEmail": "theaterkid0625@gmail.com",
+                "MemberName": "Ezra Aiden",
+                "MemberPhone": "555-000-0002"
+            }
+        ]
+    },
+    {
+        "GroupId": 3,
+        "GroupName": "Mercedes",
+        "OrganizationName": "F-1",
+        "SponsorName": "Natalie Rachelle",
+        "SponsorPhone": "1234567890",
+        "SponsorEmail": "nat214@gmail.com",
+        "MaxGroupSize": 2,
+        "Members": [
+            {
+                "MemberId": 5,
+                "MemberEmail": "theaterkid0625@gmail.com",
+                "MemberName": "Ezra Aiden",
+                "MemberPhone": "555-000-0002"
+            }
+        ]
+    },
+    {
+        "GroupId": 4,
+        "GroupName": "Alipne",
+        "OrganizationName": "F-1",
+        "SponsorName": "Natalie Rachelle",
+        "SponsorPhone": "555-000-0000",
+        "SponsorEmail": "nat214@gmail.com",
+        "MaxGroupSize": 7,
+        "Members": [
+            {
+                "MemberId": 6,
+                "MemberEmail": "theaterkid0625@gmail.com",
+                "MemberName": "Ezra Aiden",
+                "MemberPhone": "555-000-0002"
+            }
+        ]
+    },
+    {
+        "GroupId": 2,
+        "GroupName": "Warriors",
+        "OrganizationName": "F-2",
+        "SponsorName": "Brittany Ray",
+        "SponsorPhone": "555-000-0004",
+        "SponsorEmail": "brit805@aol.com",
+        "MaxGroupSize": 7,
+        "Members": [
+            {
+                "MemberId": 7,
+                "MemberEmail": "pursy1222@gmail.com",
+                "MemberName": "Pursalane Faye",
+                "MemberPhone": "555-000-0005"
+            },
+            {
+                "MemberId": 8,
+                "MemberEmail": "thebro@gmail.com",
+                "MemberName": "Zephaniah Hughes",
+                "MemberPhone": "555-000-0006"
+            }
+        ]
+    },
+    {
+        "GroupId": 3,
+        "GroupName": "Strategy One",
+        "OrganizationName": "F-3",
+        "SponsorName": "Zachary Westly",
+        "SponsorPhone": "555-000-0012",
+        "SponsorEmail": "zwest90@gmail.com",
+        "MaxGroupSize": 7,
+        "Members": [
+            {
+                "MemberId": 9,
+                "MemberEmail": "ian_the_great@gmail.com",
+                "MemberName": "Ian Auston",
+                "MemberPhone": "555-000-0025"
+            }
+        ]
+    },
+    {
+        "GroupId": 4,
+        "GroupName": "testgroup",
+        "OrganizationName": "Organization One",
+        "SponsorName": "Kevin Ruse",
+        "SponsorPhone": "555-5555",
+        "SponsorEmail": "kevin@kevin.com",
+        "MaxGroupSize": 1,
+        "Members": []
+    },
+    {
+        "GroupId": 5,
+        "GroupName": "Mclaren",
+        "OrganizationName": "F-1",
+        "SponsorName": "blah",
+        "SponsorPhone": "1234567890",
+        "SponsorEmail": "mc@mc",
+        "MaxGroupSize": 2,
+        "Members": []
+    },
+    {
+        "GroupId": 6,
+        "GroupName": "Alfa Reomeo",
+        "OrganizationName": "F-1",
+        "SponsorName": "blah2",
+        "SponsorPhone": "1234567890",
+        "SponsorEmail": "alpha@alpha.com",
+        "MaxGroupSize": 2,
+        "Members": []
+    },
+    {
+        "GroupId": 23,
+        "GroupName": "1",
+        "OrganizationName": "F-4",
+        "SponsorName": "1",
+        "SponsorPhone": "1234567890",
+        "SponsorEmail": "123@123",
+        "MaxGroupSize": 1,
+        "Members": []
+    },
+    {
+        "GroupId": 24,
+        "GroupName": "124",
+        "OrganizationName": "F-4",
+        "SponsorName": "1231",
+        "SponsorPhone": "1242354576",
+        "SponsorEmail": "123124@dsg",
+        "MaxGroupSize": 0,
+        "Members": []
+    },
+    {
+        "GroupId": 25,
+        "GroupName": "McLaren",
+        "OrganizationName": "F-1",
+        "SponsorName": "blah",
+        "SponsorPhone": "1234567890",
+        "SponsorEmail": "dasghjd@dfhjk.com",
+        "MaxGroupSize": 2,
+        "Members": []
+    },
+    {
+        "GroupId": 33,
+        "GroupName": "A",
+        "OrganizationName": "F-E",
+        "SponsorName": "A",
+        "SponsorPhone": "1234567890",
+        "SponsorEmail": "A@abc.com",
+        "MaxGroupSize": 1,
+        "Members": []
+    },
+    {
+        "GroupId": 34,
+        "GroupName": "moto",
+        "OrganizationName": "Moto GP",
+        "SponsorName": "moto",
+        "SponsorPhone": "1232353647",
+        "SponsorEmail": "motot@gmail",
+        "MaxGroupSize": 1,
+        "Members": []
+    }
+]

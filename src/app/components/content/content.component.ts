@@ -16,6 +16,7 @@ export class ContentComponent implements OnInit {
   availableMembers!: Members[];
   displayEditGroupForm: boolean = false;
   @Output() currentSelectGroupEmitter: EventEmitter<Groups> = new EventEmitter();
+  displayTeamRegistrationForm: boolean = false;
 
   constructor(private groupsService: GroupsService) {
 
@@ -83,14 +84,22 @@ export class ContentComponent implements OnInit {
     console.log(this.selectedGroup[0]);
 
     this.groupsService.deleteGroup(this.selectedGroup[0].GroupId)
-    .subscribe({
-      next: (value: Groups) => {
-        console.log('Deleted', value);
-      },
-      error: (err: any) => console.error(err),
-      complete: () =>  window.location.reload()
-    });
+      .subscribe({
+        next: (value: Groups) => {
+          console.log('Deleted', value);
+        },
+        error: (err: any) => console.error(err),
+        complete: () => window.location.reload()
+      });
 
+  }
+
+  editTeamMember(teamMember: Members) {
+    console.log(teamMember);
+  }
+
+  onAddNewTeamMember() {
+    this.displayTeamRegistrationForm = true;
   }
 
 }

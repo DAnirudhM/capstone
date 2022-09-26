@@ -31,7 +31,7 @@
   <ng-template pTemplate="caption">
     <h5>Team Members</h5>
     <span>
-      <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success m-2"></button>
+      <button pButton pRipple label="" (click)="onAddNewTeamMember()" icon="pi pi-plus" class="p-button-success m-2"></button>
     </span>
   </ng-template>
 
@@ -50,7 +50,7 @@
       <td>{{ member.MemberName }}</td>
       <td>{{ member.MemberEmail }}</td>
       <td>{{ member.MemberPhone }}</td>
-      <td> <button pButton pRipple label="" icon="pi pi-pencil" class="p-button-warning mr-2"></button> </td>
+      <td> <button pButton pRipple label="" (click)="editTeamMember(member)" icon="pi pi-pencil" class="p-button-warning mr-2"></button> </td>
       <td> <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger mr-2"></button> </td>
     </tr>
   </ng-template>
@@ -65,5 +65,9 @@
 (reloadMenuComponent)="reloadMenuComponent($event)"
 ></app-registration>
 
-<!-- (controlDisplayFromForm)="controlDisplayFromForm($event)"
-(reloadMenuComponent)="reloadMenuComponent($event)" -->
+<!-- Team Registration -->
+<app-team-registration
+*ngIf="displayTeamRegistrationForm"
+>
+
+</app-team-registration>
