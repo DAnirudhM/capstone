@@ -18,12 +18,11 @@ export class RegistrationComponent implements OnInit {
   teamSize!: number;
   maxTeamSize: number = 10;
   groupInAnOrg!: Groups[];
-  @Output() controlDisplayFromForm: EventEmitter<boolean> = new EventEmitter();
+  @Output() controlDisplayForm: EventEmitter<boolean> = new EventEmitter();
   @Output() reloadMenuComponent: EventEmitter<boolean> = new EventEmitter();
 
 
   @Input() displayRegisterGroupForm: boolean = false;
-  @Input() displayEditGroupForm: boolean = false;
   @Input() currentSelectedGroup!: Groups;
 
 
@@ -38,13 +37,11 @@ export class RegistrationComponent implements OnInit {
 
     this.teamSize = 0;
 
-    console.log(this.displayRegisterGroupForm + '   ' + this.displayEditGroupForm);
-    console.log(this.currentSelectedGroup);
 
     if (this.currentSelectedGroup) {
       this.myForm = this.formBuilder.group({
         teamName: [this.currentSelectedGroup.GroupName, [Validators.required]],
-        phoneNumber: [this.currentSelectedGroup.SponsorPhone, [Validators.required]],
+        phoneNumber: [this.currentSelectedGroup.SponsorPhone, Validators.compose([Validators.required,Validators.pattern('[- +()0-9]+')])],
         sponsorName: [this.currentSelectedGroup.SponsorName, [Validators.required]],
         sponsorEmail: [this.currentSelectedGroup.SponsorEmail, Validators.compose([Validators.required, Validators.email])],
         maxGroupSize: [this.currentSelectedGroup.MaxGroupSize, [Validators.required]]
@@ -53,7 +50,7 @@ export class RegistrationComponent implements OnInit {
     } else {
       this.myForm = this.formBuilder.group({
         teamName: [null, [Validators.required]],
-        phoneNumber: [null, [Validators.required]],
+        phoneNumber: [null, Validators.compose([Validators.required,Validators.pattern('[- +()0-9]+')])],
         sponsorName: [null, [Validators.required]],
         sponsorEmail: [null, Validators.compose([Validators.required, Validators.email])],
         maxGroupSize: [0, [Validators.required]]
@@ -102,7 +99,7 @@ export class RegistrationComponent implements OnInit {
 
   onCancel() {
     this.myForm.reset();
-    this.controlDisplayFromForm.emit(false);
+    this.controlDisplayForm.emit(false);
   }
 
   frameFormToGroup(formValue: any): Groups {

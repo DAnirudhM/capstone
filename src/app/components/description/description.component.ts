@@ -26,6 +26,21 @@ export class DescriptionComponent implements OnInit {
     switch (this.router.url) {
       case '/f-1':
         this.setF1();
+        break
+      case '/f-2':
+        this.setF2();
+        break;
+      case '/f-3':
+        this.setF3();
+        break;
+      case '/f-e':
+        this.setFE();
+        break;
+      case '/motogp':
+        this.setMotoGP();
+        break;
+      default:
+        this.setHome();
     }
   }
 
@@ -45,6 +60,38 @@ export class DescriptionComponent implements OnInit {
     The World Drivers' Championship, which became the FIA Formula One World Championship in 1981, has been one of the premier forms of racing around the world since its inaugural season in 1950. The word formula in the name refers to the set of rules to which all participants' cars must conform.
     [1] A Formula One season consists of a series of races, known as Grands Prix, which take place worldwide on both purpose-built circuits and closed public roads.`;
     this.imgPath = '/assets/pictures/image-12.jpeg';
+  }
+
+  setF2(): void {
+    this.title = `Formula - 2`;
+    this.description = `Formula One (also known as Formula 1 or F1) is the highest class of international racing for open-wheel single-seater formula racing cars sanctioned by the Fédération Internationale de l'Automobile (FIA). 
+    The World Drivers' Championship, which became the FIA Formula One World Championship in 1981, has been one of the premier forms of racing around the world since its inaugural season in 1950. The word formula in the name refers to the set of rules to which all participants' cars must conform.
+    [1] A Formula One season consists of a series of races, known as Grands Prix, which take place worldwide on both purpose-built circuits and closed public roads.`;
+    this.imgPath = '/assets/pictures/Formula-2.jpeg';
+  }
+
+  setF3(): void {
+    this.title = `Formula - 3`;
+    this.description = `Formula One (also known as Formula 1 or F1) is the highest class of international racing for open-wheel single-seater formula racing cars sanctioned by the Fédération Internationale de l'Automobile (FIA). 
+    The World Drivers' Championship, which became the FIA Formula One World Championship in 1981, has been one of the premier forms of racing around the world since its inaugural season in 1950. The word formula in the name refers to the set of rules to which all participants' cars must conform.
+    [1] A Formula One season consists of a series of races, known as Grands Prix, which take place worldwide on both purpose-built circuits and closed public roads.`;
+    this.imgPath = '/assets/pictures/Formula-3.jpeg';
+  }
+
+  setFE(): void {
+    this.title = `Formula - E`;
+    this.description = `Formula One (also known as Formula 1 or F1) is the highest class of international racing for open-wheel single-seater formula racing cars sanctioned by the Fédération Internationale de l'Automobile (FIA). 
+    The World Drivers' Championship, which became the FIA Formula One World Championship in 1981, has been one of the premier forms of racing around the world since its inaugural season in 1950. The word formula in the name refers to the set of rules to which all participants' cars must conform.
+    [1] A Formula One season consists of a series of races, known as Grands Prix, which take place worldwide on both purpose-built circuits and closed public roads.`;
+    this.imgPath = '/assets/pictures/Formula-e.jpeg';
+  }
+
+  setMotoGP(): void {
+    this.title = `Moto GP`;
+    this.description = `Formula One (also known as Formula 1 or F1) is the highest class of international racing for open-wheel single-seater formula racing cars sanctioned by the Fédération Internationale de l'Automobile (FIA). 
+    The World Drivers' Championship, which became the FIA Formula One World Championship in 1981, has been one of the premier forms of racing around the world since its inaugural season in 1950. The word formula in the name refers to the set of rules to which all participants' cars must conform.
+    [1] A Formula One season consists of a series of races, known as Grands Prix, which take place worldwide on both purpose-built circuits and closed public roads.`;
+    this.imgPath = '/assets/pictures/Moto-GP.jpeg';
   }
 
 }

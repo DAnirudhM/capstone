@@ -8,27 +8,37 @@ import { Members } from '../models/members';
 })
 export class MembersService {
   private members!: Members[];
-  private groups: BehaviorSubject<Members[]> = new BehaviorSubject<Members[]>(this.members);
+
 
   constructor(private http: HttpClient) { }
 
-  addMemberToGroup(groupID: number): Observable<Members[]> {
+  addMemberToGroup(groupID: number, members: Members): Observable<Members> {
 
-    return this.http.get<Members[]>(`http://127.0.0.1:8082/api/groups/${groupID}/members`)
+    return this.http.post<Members[]>(`http://127.0.0.1:8082/api/groups/${groupID}/members`,members)
       .pipe(
         map((response: any) => {
-          this.setGroups(response);
           return response;
         })
       );
   }
 
-  getGroups$(): Observable<Members[]> {
-    return this.groups.asObservable();
+  updateMemeberInGroup(groupID: number, members: Members): Observable<Members>{
+    return this.http.put<Members[]>(`http://127.0.0.1:8082/api/groups/${groupID}/members`,members)
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      );
   }
 
-  setGroups(data: Members[]): void {
-    this.groups.next(data);
+  removeTeamMember(groupID:number,memberId:number):Observable<Members>{
+    return this.http.delete<Members[]>(`http://127.0.0.1:8082/api/groups/${groupID}/members/${memberId}`)
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      );
   }
+
 
 }

@@ -51,23 +51,31 @@
       <td>{{ member.MemberEmail }}</td>
       <td>{{ member.MemberPhone }}</td>
       <td> <button pButton pRipple label="" (click)="editTeamMember(member)" icon="pi pi-pencil" class="p-button-warning mr-2"></button> </td>
-      <td> <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger mr-2"></button> </td>
+      <td> <button pButton pRipple label="" (click)="removeTeamMember(member)" icon="pi pi-trash" class="p-button-danger mr-2"></button> </td>
     </tr>
   </ng-template>
 </p-table>
 
-<!-- Edit of group / member -->
+<!-- Group Registration -->
 <app-registration
-*ngIf="displayEditGroupForm"
-[displayEditGroupForm]="displayEditGroupForm"
+*ngIf="displayRegisterGroupForm"
+[displayRegisterGroupForm]="displayRegisterGroupForm"
 [currentSelectedGroup]="this.selectedGroup[0]"
-(controlDisplayFromForm)="controlDisplayFromForm($event)"
 (reloadMenuComponent)="reloadMenuComponent($event)"
+(controlDisplayForm)="controlDisplayGroupForm($event)"
 ></app-registration>
 
 <!-- Team Registration -->
 <app-team-registration
 *ngIf="displayTeamRegistrationForm"
+[currentSelectedGroup]="this.selectedGroup[0]"
+[selectedTeamMember]="selectedTeamMember"
+(reloadTeamMembersComponent)="reloadTeamMembersComponent($event)"
+(controlDisplayForm)="controlDisplayTeamForm($event)"
 >
-
 </app-team-registration>
+
+<p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}"
+header="Confirmation" icon="pi pi-exclamation-triangle">
+</p-confirmDialog>
+<p-toast></p-toast>

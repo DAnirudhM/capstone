@@ -1,4 +1,4 @@
-<p-dialog header="Registration" [(visible)]="displayTeamRegisterForm || displayEditTeamForm" [draggable]="false" [modal]="true"
+<p-dialog header="Member Registration" [(visible)]="displayTeamRegisterForm " [draggable]="false" [modal]="true"
     (onHide)="onCancel()"
     [focusOnShow]="false" [style]="{width: '32rem', height: 'auto'}">
 
@@ -28,11 +28,8 @@
                 id="memberName-help" class="p-error block">Please enter a valid phone number.</small>
         </span>
 
-
         <button pButton pRipple type="button" label="Submit" (click)="onSubmit(teamRegistrationForm.value)" class="p-button-success m-1"></button>
         <button pButton pRipple type="submit" label="Cancel" (click)="onCancel()" class="p-button-danger m-1"></button>
-
-
 
     </form>
 

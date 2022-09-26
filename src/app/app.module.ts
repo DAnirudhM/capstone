@@ -29,6 +29,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SliderModule} from 'primeng/slider';
 import { TeamRegistrationComponent } from './components/team-registration/team-registration.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ToastModule} from 'primeng/toast';
+import { MessageService,ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -64,8 +67,10 @@ import { TeamRegistrationComponent } from './components/team-registration/team-r
     ReactiveFormsModule,
     FormsModule,
     SliderModule,
+    ConfirmDialogModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService,ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

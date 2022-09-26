@@ -1,24 +1,33 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { ConfirmEventType, MenuItem } from 'primeng/api';
 import { Groups } from 'src/app/models/groups.model';
 import { Members } from 'src/app/models/members';
 import { GroupsService } from 'src/app/services/groups.service';
+import { MembersService } from 'src/app/services/members.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss'],
+  providers: [ConfirmationService, MessageService]
 })
 export class ContentComponent implements OnInit {
-
   availableGroups!: Groups[];
   selectedGroup!: Groups[];
+  selectedTeamMember!: Members;
   availableMembers!: Members[];
-  displayEditGroupForm: boolean = false;
-  @Output() currentSelectGroupEmitter: EventEmitter<Groups> = new EventEmitter();
+  displayRegisterGroupForm: boolean = false;
   displayTeamRegistrationForm: boolean = false;
 
-  constructor(private groupsService: GroupsService) {
+
+  @Output() currentSelectGroupEmitter: EventEmitter<Groups> = new EventEmitter();
+
+
+  constructor(private groupsService: GroupsService,
+    private memberService: MembersService,
+    private confrimationService: ConfirmationService,
+    private messageService: MessageService) {
 
   }
 
@@ -29,7 +38,6 @@ export class ContentComponent implements OnInit {
   }
 
   onGroupSelect(event: MenuItem) {
-    //console.log('------->', event);
     const groupName = event.label ?? "";
     this.getSelectedGroup(groupName);
 
@@ -54,52 +62,103 @@ export class ContentComponent implements OnInit {
   }
 
   onTeamDetailsEdit() {
-    //console.log('Team details edit !!');
-    //console.log('Clicked', this.displayEditGroupForm);
-    this.displayEditGroupForm = true;
-    //console.log(this.selectedGroup);
+    this.displayRegisterGroupForm = true;
   }
 
   reloadMenuComponent($event: boolean) {
     if ($event) {
       console.log('reloading...');
-      this.displayEditGroupForm = false;
+      this.displayRegisterGroupForm = false;
       window.location.reload();
-      //this.ngOnInit();
     }
   }
 
-  controlDisplayFromForm($event: boolean) {
-    this.displayEditGroupForm = false;
+  controlDisplayGroupForm($event: boolean) {
+    this.displayRegisterGroupForm = false;
+  }
+
+  controlDisplayTeamForm($event: boolean){
+    this.displayTeamRegistrationForm = false;
   }
 
   updateGroup(): void {
     this.currentSelectGroupEmitter.emit(this.selectedGroup[0]);
   }
 
-  onTeamDelete() {
-
-    console.log(this.selectedGroup[0].GroupId);
-    console.log(this.selectedGroup[0].OrganizationName);
-    console.log(this.selectedGroup[0]);
-
-    this.groupsService.deleteGroup(this.selectedGroup[0].GroupId)
-      .subscribe({
-        next: (value: Groups) => {
-          console.log('Deleted', value);
-        },
-        error: (err: any) => console.error(err),
-        complete: () => window.location.reload()
-      });
-
-  }
 
   editTeamMember(teamMember: Members) {
-    console.log(teamMember);
+    this.displayTeamRegistrationForm = true;
+    this.selectedTeamMember = teamMember;
   }
+
 
   onAddNewTeamMember() {
     this.displayTeamRegistrationForm = true;
+  }
+
+  reloadTeamMembersComponent($event: boolean) {
+    if ($event) {
+      this.displayTeamRegistrationForm = false;
+      window.location.reload();
+      //this.ngOnInit();
+    }
+  }
+
+  onTeamDelete() {
+    this.confrimationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.groupsService.deleteGroup(this.selectedGroup[0].GroupId)
+          .subscribe({
+            next: (value: Groups) => {
+              console.log('Deleted', value);
+            },
+            error: (err: any) => console.error(err),
+            complete: () => window.location.reload()
+          });
+      },
+      reject: (type: any) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+            break;
+          case ConfirmEventType.CANCEL:
+            this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'You have cancelled' });
+            break;
+        }
+      }
+    });
+
+  }
+
+  removeTeamMember(teamMember: Members) {
+    this.confrimationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.memberService.removeTeamMember(this.selectedGroup[0].GroupId, teamMember.MemberId)
+          .subscribe({
+            next: (value: Members) => {
+              console.log('Removed', value);
+            },
+            error: (err: any) => console.error(err),
+            complete: () => this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' })
+          });
+      },
+      reject: (type: any) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+            break;
+          case ConfirmEventType.CANCEL:
+            this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'You have cancelled' });
+            break;
+        }
+      }
+    });
   }
 
 }
