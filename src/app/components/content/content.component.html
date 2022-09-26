@@ -4,7 +4,7 @@
     <h5>Team Details</h5>
     <span class="p-input-icon-left">
       <button pButton pRipple (click) = "onTeamDetailsEdit()" label="" icon="pi pi-pencil" class="p-button-warning mr-2"></button>
-      <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger mr-2"></button>
+      <button pButton pRipple (click) = "onTeamDelete()" label="" icon="pi pi-trash" class="p-button-danger mr-2"></button>
     </span>
   </ng-template>
 
@@ -55,3 +55,15 @@
     </tr>
   </ng-template>
 </p-table>
+
+<!-- Edit of group / member -->
+<app-registration
+*ngIf="displayEditGroupForm"
+[displayEditGroupForm]="displayEditGroupForm"
+[currentSelectedGroup]="this.selectedGroup[0]"
+(controlDisplayFromForm)="controlDisplayFromForm($event)"
+(reloadMenuComponent)="reloadMenuComponent($event)"
+></app-registration>
+
+<!-- (controlDisplayFromForm)="controlDisplayFromForm($event)"
+(reloadMenuComponent)="reloadMenuComponent($event)" -->

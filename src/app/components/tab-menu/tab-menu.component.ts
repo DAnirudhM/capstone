@@ -28,7 +28,7 @@ export class TabMenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Initializing tab menu component ');
+    //console.log('Initializing tab menu component ');
     this.tabActiveIndex = 0;
     const orgId = this.sharedService.lookUpOrgID(this.router.url);
     this.getMenuItems(orgId);
@@ -55,13 +55,13 @@ export class TabMenuComponent implements OnInit {
   }
 
   onRegisterGroupClick() {
-    console.log('Clicked', this.displayRegisterGroupForm);
+    //console.log('Clicked', this.displayRegisterGroupForm);
     this.displayRegisterGroupForm = true;
   }
 
   controlDisplayFromForm(e: boolean): void {
     this.displayRegisterGroupForm = e;
-    console.log(e);
+    //console.log(e);
   }
 
   handleError(error: any): void {
@@ -71,13 +71,10 @@ export class TabMenuComponent implements OnInit {
 
   reloadMenuComponent($event: boolean) {
     if ($event) {
-      console.log('reloading...');
-      const orgId = this.sharedService.lookUpOrgID(this.router.url);
-      this.getMenuItems(orgId);
+      //console.log('reloading...');
+      this.displayRegisterGroupForm = false;
       window.location.reload();
       //this.ngOnInit();
-    } else {
-      console.log('Do no reload');
     }
   }
 
@@ -85,7 +82,7 @@ export class TabMenuComponent implements OnInit {
     this.groupsService.getGroupsByOrganization(orgId)
       .subscribe({
         next: (value: Groups[]) => {
-          console.log(value);
+          //console.log(value);
           this.groupInAnOrg = value;
           this.initializeGroups(value);
         },

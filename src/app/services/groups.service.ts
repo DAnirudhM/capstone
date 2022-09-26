@@ -10,7 +10,7 @@ import { Organizations } from '../models/organizations.model';
 })
 export class GroupsService {
 
-  private group!:Groups[];
+  private group!: Groups[];
   private groups: BehaviorSubject<Groups[]> = new BehaviorSubject<Groups[]>(this.group);
 
   constructor(private http: HttpClient) { }
@@ -34,10 +34,24 @@ export class GroupsService {
     this.groups.next(data);
   }
 
+  refreshGroups(): void {
+    this.getGroupsByOrganization('1').subscribe();
+  }
 
-  addGroup(group:Groups) : Observable<Groups>{
-    return this.http.post<Groups>(`http://127.0.0.1:8082/api/groups/`,group);
+
+  addGroup(group: Groups): Observable<Groups> {
+    return this.http.post<Groups>(`http://127.0.0.1:8082/api/groups/`, group);
+  }
+
+  updateGroup(group: Groups): Observable<Groups> {
+    return this.http.put<Groups>(`http://127.0.0.1:8082/api/groups/`, group);
+  }
+
+  deleteGroup(id: number): Observable<Groups> {
+    return this.http.delete<Groups>(`http://127.0.0.1:8082/api/groups/${id}`);
   }
 
 
 }
+
+
