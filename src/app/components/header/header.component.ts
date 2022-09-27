@@ -10,31 +10,43 @@ import { OrganizationsService } from 'src/app/services/organizations.service';
 })
 export class HeaderComponent implements OnInit {
 
+
   headerTitle: string = 'Motor Racing'
   altBrandLogo: string = 'Motor Racing Logo';
-  //currentOrganizations!: Observable<Organizations[]>;
   currentOrganizations!: Organizations[];
   string: string = 'sampleurl';
+  searchKey!: string;
+  isSearchEnabled!:boolean;
+
 
   constructor(private organizationsService: OrganizationsService) {
-   
+
   }
 
   ngOnInit(): void {
     this.organizationsService.getOrganizations().subscribe({
       next: (value: Organizations[]) => {
-        this.currentOrganizations= value;
-        // this.currentOrganizations = new Observable();
-        // this.currentOrganizations.subscribe(d=> console.log(d));
+        this.currentOrganizations = value;
       },
-      error: (error: any) => handleError(error),
-      complete: () => void(0)
+      error: (error: any) => this.handleError(error),
+      complete: () => void (0)
     });
   }
 
+  search() {
+    console.log('enter pressed',this.searchKey);
+    if(this.searchKey){
+      this.isSearchEnabled = true;
+    }
+  }
+
+  handleError(error: any): void {
+    console.error(error);
+    throw new Error('Function not implemented.');
+  }
+
 }
-function handleError(error: any): void {
-  console.error(error);
-  throw new Error('Function not implemented.');
-}
+
+
+
 

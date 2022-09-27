@@ -34,8 +34,14 @@ export class GroupsService {
     this.groups.next(data);
   }
 
-  refreshGroups(): void {
-    this.getGroupsByOrganization('1').subscribe();
+  refreshGroups(orgId:string): void {
+    this.getGroupsByOrganization(orgId)
+    .subscribe({
+      next: (value: Groups[]) => this.setGroups(value),
+      error: (error: any) => console.log(error),
+      complete: () => void (0)
+    });
+   
   }
 
 
@@ -50,7 +56,6 @@ export class GroupsService {
   deleteGroup(id: number): Observable<Groups> {
     return this.http.delete<Groups>(`http://127.0.0.1:8082/api/groups/${id}`);
   }
-
 
 }
 

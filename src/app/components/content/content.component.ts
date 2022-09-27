@@ -1,10 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ConfirmEventType, MenuItem } from 'primeng/api';
 import { Groups } from 'src/app/models/groups.model';
 import { Members } from 'src/app/models/members';
 import { GroupsService } from 'src/app/services/groups.service';
 import { MembersService } from 'src/app/services/members.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { SharedService } from 'src/app/services/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-content',
@@ -20,6 +22,13 @@ export class ContentComponent implements OnInit {
   displayRegisterGroupForm: boolean = false;
   displayTeamRegistrationForm: boolean = false;
 
+  maxGroupSize: number = 0;
+  currentMemberSize: number = 0;
+
+  selectedGroupName!: string;
+
+
+
 
   @Output() currentSelectGroupEmitter: EventEmitter<Groups> = new EventEmitter();
 
@@ -27,7 +36,9 @@ export class ContentComponent implements OnInit {
   constructor(private groupsService: GroupsService,
     private memberService: MembersService,
     private confrimationService: ConfirmationService,
-    private messageService: MessageService) {
+    private messageService: MessageService,
+    private sharedService: SharedService,
+    private router: Router) {
 
   }
 
@@ -39,6 +50,7 @@ export class ContentComponent implements OnInit {
 
   onGroupSelect(event: MenuItem) {
     const groupName = event.label ?? "";
+    this.selectedGroupName = groupName;
     this.getSelectedGroup(groupName);
 
   }
@@ -59,6 +71,9 @@ export class ContentComponent implements OnInit {
     this.selectedGroup = [selectGrp];
     this.availableMembers = selectGrp.Members;
 
+    this.maxGroupSize = this.selectedGroup?.[0].MaxGroupSize;
+    this.currentMemberSize = this.availableMembers?.length;
+
   }
 
   onTeamDetailsEdit() {
@@ -69,7 +84,14 @@ export class ContentComponent implements OnInit {
     if ($event) {
       console.log('reloading...');
       this.displayRegisterGroupForm = false;
-      window.location.reload();
+      this.groupsService.refreshGroups(this.sharedService.lookUpOrgID(this.router.url));
+      this.groupsService.getGroups$().subscribe(groups => {
+        this.availableGroups = groups;
+        this.selectedGroup = [this.availableGroups.find(g=>this.selectedGroupName === g.GroupName)!];
+        console.log(this.selectedGroup);
+        
+      });
+
     }
   }
 
@@ -77,7 +99,7 @@ export class ContentComponent implements OnInit {
     this.displayRegisterGroupForm = false;
   }
 
-  controlDisplayTeamForm($event: boolean){
+  controlDisplayTeamForm($event: boolean) {
     this.displayTeamRegistrationForm = false;
   }
 
@@ -99,7 +121,7 @@ export class ContentComponent implements OnInit {
   reloadTeamMembersComponent($event: boolean) {
     if ($event) {
       this.displayTeamRegistrationForm = false;
-      window.location.reload();
+      //window.location.reload();
       //this.ngOnInit();
     }
   }

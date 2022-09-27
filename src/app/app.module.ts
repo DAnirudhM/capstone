@@ -32,6 +32,7 @@ import { TeamRegistrationComponent } from './components/team-registration/team-r
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ToastModule} from 'primeng/toast';
 import { MessageService,ConfirmationService } from 'primeng/api';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MessageService,ConfirmationService } from 'primeng/api';
     DetailsComponent,
     TabMenuComponent,
     RegistrationComponent,
-    TeamRegistrationComponent
+    TeamRegistrationComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

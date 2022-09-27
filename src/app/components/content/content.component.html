@@ -29,9 +29,9 @@
 
 <p-table [value]="availableMembers" responsiveLayout="scroll">
   <ng-template pTemplate="caption">
-    <h5>Team Members {{ selectedGroup[0].Members.length }} \ {{selectedGroup[0].MaxGroupSize}}</h5>
+    <h5>Team Members {{currentMemberSize}}\{{maxGroupSize}}</h5>
     <span>
-      <button *ngIf="(selectedGroup[0].Members.length<selectedGroup[0].MaxGroupSize)" pButton pRipple label="" (click)="onAddNewTeamMember()" icon="pi pi-plus" class="p-button-success m-2"></button>
+      <button *ngIf="currentMemberSize<maxGroupSize" pButton pRipple label="" (click)="onAddNewTeamMember()" icon="pi pi-plus" class="p-button-success m-2"></button>
     </span>
   </ng-template>
 

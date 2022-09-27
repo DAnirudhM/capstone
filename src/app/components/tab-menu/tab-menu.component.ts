@@ -17,6 +17,7 @@ export class TabMenuComponent implements OnInit {
   groups: MenuItem[] = [];
   groupInAnOrg!: Groups[];
   tabActiveIndex!: number;
+  orgId!:string;
 
   displayRegisterGroupForm: boolean = false;
 
@@ -29,11 +30,12 @@ export class TabMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.tabActiveIndex = 0;
-    const orgId = this.sharedService.lookUpOrgID(this.router.url);
-    this.getMenuItems(orgId);
+    this.orgId = this.sharedService.lookUpOrgID(this.router.url);
+    this.getMenuItems();
   }
 
   initializeGroups(groups: Groups[]): void {
+    this.groups = [];
     groups.forEach((group, index) => this.groups.push({
       label: group.GroupName,
       tabindex: index.toString(),
@@ -66,15 +68,16 @@ export class TabMenuComponent implements OnInit {
   }
 
   reloadMenuComponent($event: boolean) {
+    console.log('Group Update here ?? ');
     if ($event) {
       this.displayRegisterGroupForm = false;
-      window.location.reload();
+      this.getMenuItems();
+      this.tabActiveIndex=this.groups.length;
     }
   }
 
-  getMenuItems(orgId: string): void {
-    console.log(orgId)
-    this.groupsService.getGroupsByOrganization(orgId)
+  getMenuItems(): void {
+    this.groupsService.getGroupsByOrganization(this.orgId)
       .subscribe({
         next: (value: Groups[]) => {
           this.groupInAnOrg = value;
@@ -84,6 +87,7 @@ export class TabMenuComponent implements OnInit {
         complete: () => void (0)
       });
   }
+
 
 }
 

@@ -3,15 +3,20 @@
         onclick="location.href='/'" />
     <div id="header-middle-section">
         <nav id="main-nav">
-            <a *ngFor="let org of currentOrganizations" routerLink="{{ org.OrganizationName | lowercase | removewhitespaces }}"
-            routerLinkActive="active"> {{ org.OrganizationName }} </a>
+            <a *ngFor="let org of currentOrganizations"
+                routerLink="{{ org.OrganizationName | lowercase | removewhitespaces }}" routerLinkActive="active"> {{
+                org.OrganizationName }} </a>
         </nav>
         <h1>{{headerTitle}}</h1>
     </div>
-    <form id="searchForm">
-        <span class="p-float-label">
-            <input id="float-input" type="text" pInputText>
-            <label for="float-input">Search</label>
-        </span>
-    </form>
+
+    <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText [(ngModel)]="searchKey" (keydown.enter)="search()" onenter placeholder="Search">
+    </span>
+
 </header>
+
+<app-search *ngIf="isSearchEnabled"
+[searchKey]="searchKey"
+></app-search>
