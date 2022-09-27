@@ -36,8 +36,6 @@
                 id="teamName-help" class="p-error block">Please enter a valid phone number.</small>
         </span>
 
-
-
         <span class="m-5" [style]="{display: 'block', position: 'relative'}">
             <label for="firstname" class="block labelTop m-2">Max Team Size {{teamSize}}</label>
             <p-slider formControlName="maxGroupSize" [(ngModel)]="teamSize" [max]="maxTeamSize"></p-slider>
@@ -46,9 +44,6 @@
         <button pButton pRipple type="button" label="Submit" (click)="onSubmit(myForm.value)" class="p-button-success m-1"></button>
         <button pButton pRipple type="submit" label="Cancel" (click)="onCancel()" class="p-button-danger m-1"></button>
 
-
-
     </form>
-
-
 </p-dialog>
+<p-toast></p-toast>

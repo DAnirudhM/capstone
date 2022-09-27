@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Groups } from 'src/app/models/groups.model';
 import { GroupsService } from 'src/app/services/groups.service';
 import { SharedService } from 'src/app/services/shared.service';
@@ -29,7 +31,8 @@ export class RegistrationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private groupsService: GroupsService,
     private router: Router,
-    private sharedService: SharedService) {
+    private sharedService: SharedService,
+    private messageService: MessageService) {
 
   }
 
@@ -74,7 +77,9 @@ export class RegistrationComponent implements OnInit {
           next: (value: Groups) => {
             console.log('Updated', value);
           },
-          error: (err: any) => console.error(err),
+          error: (err: HttpErrorResponse) => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error });
+          },
           complete: () => {
             this.displayRegisterGroupForm = false;
             this.reloadMenuComponent.emit(true)
