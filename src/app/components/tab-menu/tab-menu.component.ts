@@ -72,7 +72,7 @@ export class TabMenuComponent implements OnInit {
     if ($event) {
       this.displayRegisterGroupForm = false;
       this.getMenuItems();
-      this.tabActiveIndex=this.groups.length;
+      this.tabActiveIndex=this.groups.length;  
     }
   }
 

@@ -26,6 +26,15 @@ export class GroupsService {
       );
   }
 
+  getAllGroups():Observable<Groups[]>{
+    return this.http.get<Groups[]>(`http://127.0.0.1:8082/api/groups`)
+    .pipe(
+      map((response: any) => {
+        return response;
+      })
+    );
+  }
+
   getGroups$(): Observable<Groups[]> {
     return this.groups.asObservable();
   }
