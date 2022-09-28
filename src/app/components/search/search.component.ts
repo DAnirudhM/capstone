@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { Table } from 'primeng/table';
 import { Groups } from 'src/app/models/groups.model';
 import { GroupsService } from 'src/app/services/groups.service';
+import { SharedService } from 'src/app/services/shared.service';
 import { ContentComponent } from '../content/content.component';
 
 @Component({
@@ -11,9 +12,6 @@ import { ContentComponent } from '../content/content.component';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
-
-
   displaySearch: boolean = true;
   displayModal: boolean = true;
   loading: boolean = false;
@@ -22,7 +20,7 @@ export class SearchComponent implements OnInit {
 
   @Output() controlSearchDialogEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private groupsService: GroupsService,private router:Router) { }
+  constructor(private groupsService: GroupsService, private router: Router, private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.groupsService.getAllGroups().subscribe({
@@ -30,7 +28,7 @@ export class SearchComponent implements OnInit {
         this.groups = value;
       },
       error: (err: any) => console.error(err),
-      complete: () => { console.log(this.groups) }
+      complete: () => {  }
     });
   }
   controlSearchDialog() {
@@ -39,35 +37,23 @@ export class SearchComponent implements OnInit {
 
   onSearchSelectionClick(group: Groups) {
     console.log(group);
-    this.router.navigate(['/f-1']);
+    let extra: NavigationExtras = {
+      queryParams: {
+        "teamName": "a"
+      }
+    };
+    this.router.navigate(['f-1']);
+    // this.router.navigate(['f-1'], {
+    //   queryParams: {
+    //     teamName: 'a'
+    //   },
+    //   // queryParamsHandling: 'merge',
+    //   // skipLocationChange: false
+    //   // do not trigger navigation
+    // });
+
+    this.sharedService.viewSearchList$.next(group);
     this.controlSearchDialog();
-    
-
-
-    // GroupId
-    // :
-    // 39
-    // GroupName
-    // :
-    // "Sand"
-    // MaxGroupSize
-    // :
-    // 2
-    // Members
-    // :
-    // []
-    // OrganizationName
-    // :
-    // "F-2"
-    // SponsorEmail
-    // :
-    // "sand@gnad"
-    // SponsorName
-    // :
-    // "Sand"
-    // SponsorPhone
-    // :
-    // "8943579485"
   }
 
 }

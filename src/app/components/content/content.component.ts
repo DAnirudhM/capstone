@@ -46,6 +46,8 @@ export class ContentComponent implements OnInit {
     this.groupsService.getGroups$().subscribe(groups => {
       this.availableGroups = groups;
     });
+
+    
   }
 
   onGroupSelect(event: MenuItem) {
@@ -87,9 +89,9 @@ export class ContentComponent implements OnInit {
       this.groupsService.refreshGroups(this.sharedService.lookUpOrgID(this.router.url));
       this.groupsService.getGroups$().subscribe(groups => {
         this.availableGroups = groups;
-        this.selectedGroup = [this.availableGroups.find(g=>this.selectedGroupName === g.GroupName)!];
+        this.selectedGroup = [this.availableGroups.find(g => this.selectedGroupName === g.GroupName)!];
         console.log(this.selectedGroup);
-        
+
       });
 
     }

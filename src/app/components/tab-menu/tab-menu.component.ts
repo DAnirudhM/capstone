@@ -17,7 +17,8 @@ export class TabMenuComponent implements OnInit {
   groups: MenuItem[] = [];
   groupInAnOrg!: Groups[];
   tabActiveIndex!: number;
-  orgId!:string;
+  orgId!: string;
+  searchedGroup!: Groups;
 
   displayRegisterGroupForm: boolean = false;
 
@@ -32,6 +33,29 @@ export class TabMenuComponent implements OnInit {
     this.tabActiveIndex = 0;
     this.orgId = this.sharedService.lookUpOrgID(this.router.url);
     this.getMenuItems();
+    
+    setTimeout(() => {
+      this.sharedService.viewSearchList$.subscribe({
+        next: (value: Groups) => {
+          console.log('From Search ', value);
+          if (value) {
+            this.searchedGroup = value;
+            let roteURL = this.sharedService.getRouterURLByOrgName(this.searchedGroup.OrganizationName);
+            this.router.navigate([roteURL]);
+
+            console.log(roteURL);
+            console.log(this.findTeamIndex(this.searchedGroup.GroupName));
+            this.tabActiveIndex = this.findTeamIndex(this.searchedGroup.GroupName);
+            this.setupLayoutPanel();
+          }
+
+        },
+        error: (error: any) => this.handleError(error),
+        complete: () => { }
+      }
+      );
+    }, 100);
+
   }
 
   initializeGroups(groups: Groups[]): void {
@@ -41,12 +65,12 @@ export class TabMenuComponent implements OnInit {
       tabindex: index.toString(),
       command: event => this.tabMenuClicked(event)
     }));
-
-    this.selectedGroup.emit(this.groups[this.tabActiveIndex]);
+    this.setupLayoutPanel();
   }
 
   tabMenuClicked(event: any): void {
     this.tabActiveIndex = event.item.tabindex;
+    console.log(this.router.url);
     this.setupLayoutPanel();
   }
 
@@ -72,7 +96,7 @@ export class TabMenuComponent implements OnInit {
     if ($event) {
       this.displayRegisterGroupForm = false;
       this.getMenuItems();
-      this.tabActiveIndex=this.groups.length;  
+      this.tabActiveIndex = this.groups.length;
     }
   }
 
@@ -86,6 +110,14 @@ export class TabMenuComponent implements OnInit {
         error: (error: any) => this.handleError(error),
         complete: () => void (0)
       });
+  }
+
+  findTeamIndex(groupName: string): number {
+    console.log('Searching group name ', groupName);
+    console.log(this.groups);
+    setTimeout('', 5000);
+    return this.groups.findIndex(g => groupName === g.label);
+
   }
 
 

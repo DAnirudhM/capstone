@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Groups } from '../models/groups.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
+  private group!: Groups;
+  viewSearchList$!: Subject<Groups>;
 
-  constructor() { }
+  constructor() { 
+    //this.viewSearchList$ =  new Subject<Groups>();
+    this.viewSearchList$ =  new BehaviorSubject<Groups>(this.group);
+  }
+
+  routeSearch(group:Groups){
+    this.viewSearchList$.next(group);
+  }
 
   lookUpOrgID(path: string): string {
     switch (path) {
@@ -36,6 +47,23 @@ export class SharedService {
         return 'F-E';
       case '/motogp':
         return 'Moto GP';
+      default:
+        return '/';
+    }
+  }
+
+  getRouterURLByOrgName(orgName: string): string {
+    switch (orgName) {
+      case 'F-1':
+        return 'f-1';
+      case 'F-2':
+        return 'f-2';
+      case 'F-3':
+        return 'f-3';
+      case 'F-E':
+        return 'f-e';
+      case 'Moto GP':
+        return 'motogp';
       default:
         return '/';
     }
