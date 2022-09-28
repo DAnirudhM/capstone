@@ -1,46 +1,48 @@
 <p-dialog header="Group Search" [(visible)]="displaySearch" [modal]="true" [style]="{width: '90%',height:'90%'}"
-    [draggable]="false" [resizable]="false">
-    <p-table #dt2 [value]="groups" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+    [draggable]="false" [resizable]="false" (onHide)="controlSearchDialog()">
+    <p-table #dt2 [value]="groups" dataKey="id" [rows]="20" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['orgName']">
+        [globalFilterFields]="['OrganizationName','GroupName','SponsorName','SponsorPhone','SponsorEmail']"
+        selectionMode="single" [(selection)]="selectedGroup"
+       >
         <ng-template pTemplate="caption">
             <div class="flex">
                 <span class="p-input-icon-left ml-auto">
                     <i class="pi pi-search"></i>
-                    <input pInputText type="text"  value="{{searchKey}}" (input)="dt2.filterGlobal($event.target.value, 'contains')"
+                    <input pInputText type="text" #textInput (input)="dt2.filterGlobal(textInput.value, 'contains')"
                         placeholder="Search keyword" />
-                        <!-- <input pInputText type="text"  value="{{searchKey}}"
-                        placeholder="Search keyword" /> -->
-                        <!-- (input)="dt2.filterGlobal($event!.target?.value, 'contains')" -->
-                        
                 </span>
             </div>
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th>Organization</th>
-                <th>Team Name</th>
-                <th>Sponsor Name</th>
-                <th>Sponsor Phone</th>
-                <th>Sponsor E-mail</th>
+                <th pSortableColumn="Organization">Organization <p-sortIcon field="Organization"></p-sortIcon>
+                </th>
+                <th pSortableColumn="GroupName">Team Name <p-sortIcon field="GroupName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="SponsorName">Sponsor Name <p-sortIcon field="SponsorName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="SponsorPhone">Sponsor Phone <p-sortIcon field="SponsorPhone"></p-sortIcon>
+                </th>
+                <th pSortableColumn="SponsorEmail">Sponsor E-mail <p-sortIcon field="SponsorEmail"></p-sortIcon>
+                </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-group>
-            <tr>
-                <td field="orgName">
+            <tr (click)="onSearchSelectionClick(group)">
+                <td field="OrganizationName">
                     {{group.OrganizationName}}
                 </td>
-                <td>
+                <td field="GroupName">
                     {{group.GroupName}}
                 </td>
-                <td>
+                <td field="SponsorName">
                     {{group.SponsorName}}
                 </td>
-                <td>
+                <td field="SponsorPhone">
                     {{group.SponsorPhone}}
                 </td>
-                <td>
+                <td field="SponsorEmail">
                     {{group.SponsorEmail}}
                 </td>
             </tr>
@@ -52,7 +54,4 @@
         </ng-template>
     </p-table>
 
-    <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
-    </ng-template>
 </p-dialog>

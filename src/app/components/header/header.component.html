@@ -11,12 +11,10 @@
     </div>
 
     <span class="p-input-icon-left">
-        <i class="pi pi-search"></i>
-        <input type="text" pInputText [(ngModel)]="searchKey" (keydown.enter)="search()" onenter placeholder="Search">
+        <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-danger p-button-text p-button-lg"
+            (click)="openSearchDialog(true)"></button>
     </span>
 
 </header>
 
-<app-search *ngIf="isSearchEnabled"
-[searchKey]="searchKey"
-></app-search>
+<app-search *ngIf="isSearchEnabled" (controlSearchDialogEmitter)="openSearchDialog($event)"></app-search>

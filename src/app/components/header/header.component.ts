@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   currentOrganizations!: Organizations[];
   string: string = 'sampleurl';
   searchKey!: string;
-  isSearchEnabled!:boolean;
+  isSearchEnabled!: boolean;
 
 
   constructor(private organizationsService: OrganizationsService) {
@@ -29,15 +29,12 @@ export class HeaderComponent implements OnInit {
         this.currentOrganizations = value;
       },
       error: (error: any) => this.handleError(error),
-      complete: () => void (0)
+      complete: () => {}
     });
   }
 
-  search() {
-    console.log('enter pressed',this.searchKey);
-    if(this.searchKey){
-      this.isSearchEnabled = true;
-    }
+  openSearchDialog(e: any) {
+    this.isSearchEnabled = e;
   }
 
   handleError(error: any): void {
