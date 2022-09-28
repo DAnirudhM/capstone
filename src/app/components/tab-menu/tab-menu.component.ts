@@ -34,22 +34,18 @@ export class TabMenuComponent implements OnInit {
   ngOnInit(): void {
     this.tabActiveIndex = 0;
     this.orgId = this.sharedService.lookUpOrgID(this.router.url);
-    console.log(this.orgId);
-
     this.getMenuItems();
 
     setTimeout(() => {
-      console.log('From outside Search');
       this.sharedService.viewSearchList$.subscribe({
         next: (value: Groups) => {
-          console.log('From inside Search ', value);
           if (value) {
             this.tabActiveIndex = this.findTeamIndex(value.GroupName);
-            
+            this.setupLayoutPanel();
           }
         },
         error: (error: any) => this.handleError(error),
-        complete: () => { this.setupLayoutPanel();}
+        complete: () => { }
       });
 
     }, 200);
@@ -68,12 +64,18 @@ export class TabMenuComponent implements OnInit {
 
   tabMenuClicked(event: any): void {
     this.tabActiveIndex = event.item.tabindex;
-    console.log(this.router.url);
+
     this.setupLayoutPanel();
   }
 
   setupLayoutPanel(): void {
-    this.selectedGroup.emit(this.groups[this.tabActiveIndex]);
+
+    if (this.groups[this.tabActiveIndex]) {
+      this.selectedGroup.emit(this.groups[this.tabActiveIndex]);
+    } else {
+      this.tabActiveIndex = 0;
+      this.selectedGroup.emit(this.groups[0]);
+    }
   }
 
   onRegisterGroupClick() {
@@ -90,7 +92,6 @@ export class TabMenuComponent implements OnInit {
   }
 
   reloadMenuComponent($event: boolean) {
-    console.log('Group Update here ?? ');
     if ($event) {
       this.displayRegisterGroupForm = false;
       this.getMenuItems();
@@ -111,11 +112,7 @@ export class TabMenuComponent implements OnInit {
   }
 
   findTeamIndex(groupName: string): number {
-    console.log('Searching group name ', groupName);
-    console.log(this.groups);
-    setTimeout('', 5000);
     return this.groups.findIndex(g => groupName === g.label);
-
   }
 
 
