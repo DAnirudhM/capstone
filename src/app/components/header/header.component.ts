@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Organizations } from 'src/app/models/organizations.model';
 import { OrganizationsService } from 'src/app/services/organizations.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,6 @@ import { OrganizationsService } from 'src/app/services/organizations.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
 
   headerTitle: string = 'Motor Racing'
   altBrandLogo: string = 'Motor Racing Logo';
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   isSearchEnabled!: boolean;
 
 
-  constructor(private organizationsService: OrganizationsService) {
+  constructor(private organizationsService: OrganizationsService, private sharedService: SharedService) {
 
   }
 
@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
         this.currentOrganizations = value;
       },
       error: (error: any) => this.handleError(error),
-      complete: () => {}
+      complete: () => { }
     });
   }
 

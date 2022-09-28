@@ -20,7 +20,8 @@ export class SearchComponent implements OnInit {
 
   @Output() controlSearchDialogEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private groupsService: GroupsService, private router: Router, private sharedService: SharedService) { }
+  constructor(private groupsService: GroupsService,
+    private router: Router, private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.groupsService.getAllGroups().subscribe({
@@ -28,7 +29,7 @@ export class SearchComponent implements OnInit {
         this.groups = value;
       },
       error: (err: any) => console.error(err),
-      complete: () => {  }
+      complete: () => { }
     });
   }
   controlSearchDialog() {
@@ -36,24 +37,12 @@ export class SearchComponent implements OnInit {
   }
 
   onSearchSelectionClick(group: Groups) {
-    console.log(group);
-    let extra: NavigationExtras = {
-      queryParams: {
-        "teamName": "a"
-      }
-    };
-    this.router.navigate(['f-1']);
-    // this.router.navigate(['f-1'], {
-    //   queryParams: {
-    //     teamName: 'a'
-    //   },
-    //   // queryParamsHandling: 'merge',
-    //   // skipLocationChange: false
-    //   // do not trigger navigation
-    // });
-
-    this.sharedService.viewSearchList$.next(group);
     this.controlSearchDialog();
+    let roteURL = this.sharedService.getRouterURLByOrgName(group.OrganizationName);
+    this.router.navigate([roteURL]);
+    //this.router.navigate(['f-1']);
+    this.sharedService.viewSearchList$.next(group);
+   // this.controlSearchDialog();
   }
 
 }

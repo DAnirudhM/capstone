@@ -47,7 +47,7 @@ export class ContentComponent implements OnInit {
       this.availableGroups = groups;
     });
 
-    
+
   }
 
   onGroupSelect(event: MenuItem) {
@@ -90,8 +90,6 @@ export class ContentComponent implements OnInit {
       this.groupsService.getGroups$().subscribe(groups => {
         this.availableGroups = groups;
         this.selectedGroup = [this.availableGroups.find(g => this.selectedGroupName === g.GroupName)!];
-        console.log(this.selectedGroup);
-
       });
 
     }
@@ -123,8 +121,14 @@ export class ContentComponent implements OnInit {
   reloadTeamMembersComponent($event: boolean) {
     if ($event) {
       this.displayTeamRegistrationForm = false;
-      //window.location.reload();
-      //this.ngOnInit();
+      this.groupsService.refreshGroups(this.sharedService.lookUpOrgID(this.router.url));
+      this.groupsService.getGroups$().subscribe(groups => {
+        this.availableGroups = groups;
+        this.selectedGroup = [this.availableGroups.find(g => this.selectedGroupName === g.GroupName)!];
+        this.availableMembers = this.availableGroups.find(g => this.selectedGroupName === g.GroupName)?.Members!;
+        this.maxGroupSize = this.selectedGroup[0].MaxGroupSize;
+        this.currentMemberSize = this.availableMembers.length;
+      });
     }
   }
 
@@ -169,7 +173,10 @@ export class ContentComponent implements OnInit {
               console.log('Removed', value);
             },
             error: (err: any) => console.error(err),
-            complete: () => this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' })
+            complete: () => {
+              this.reloadTeamMembersComponent(true);
+              this.messageService.add({ severity: 'info', summary: 'Success ', detail: 'Member delete success!' })
+            }
           });
       },
       reject: (type: any) => {

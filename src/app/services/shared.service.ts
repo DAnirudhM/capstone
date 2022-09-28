@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { AsyncSubject, BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 import { Groups } from '../models/groups.model';
 
 @Injectable({
@@ -12,6 +12,7 @@ export class SharedService {
   constructor() { 
     //this.viewSearchList$ =  new Subject<Groups>();
     this.viewSearchList$ =  new BehaviorSubject<Groups>(this.group);
+    //this.viewSearchList$ =  new ReplaySubject<Groups>(0);
   }
 
   routeSearch(group:Groups){

@@ -5,7 +5,7 @@
     <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
 
         <span class="p-float-label  m-5">
-            <input pInputText  type="text" id="teamName" name="teamName" autocomplete="teamName"
+            <input pInputText type="text" id="teamName" name="teamName" autocomplete="teamName"
                 formControlName="teamName">
             <label for="teamName" class="block labelTop">Team Name</label>
             <small *ngIf="!myForm.controls['teamName'].valid && myForm.controls['teamName'].touched" id="teamName-help"

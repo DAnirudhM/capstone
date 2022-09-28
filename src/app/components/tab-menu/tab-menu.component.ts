@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api/menuitem';
 import { takeUntil } from 'rxjs';
 import { Groups } from 'src/app/models/groups.model';
@@ -25,36 +25,34 @@ export class TabMenuComponent implements OnInit {
   @Output() selectedGroup: EventEmitter<MenuItem> = new EventEmitter();
 
 
-  constructor(private router: Router, private groupsService: GroupsService, private sharedService: SharedService) {
+  constructor(private router: Router,
+    private groupsService: GroupsService,
+    private sharedService: SharedService) {
 
   }
 
   ngOnInit(): void {
     this.tabActiveIndex = 0;
     this.orgId = this.sharedService.lookUpOrgID(this.router.url);
+    console.log(this.orgId);
+
     this.getMenuItems();
-    
+
     setTimeout(() => {
+      console.log('From outside Search');
       this.sharedService.viewSearchList$.subscribe({
         next: (value: Groups) => {
-          console.log('From Search ', value);
+          console.log('From inside Search ', value);
           if (value) {
-            this.searchedGroup = value;
-            let roteURL = this.sharedService.getRouterURLByOrgName(this.searchedGroup.OrganizationName);
-            this.router.navigate([roteURL]);
-
-            console.log(roteURL);
-            console.log(this.findTeamIndex(this.searchedGroup.GroupName));
-            this.tabActiveIndex = this.findTeamIndex(this.searchedGroup.GroupName);
-            this.setupLayoutPanel();
+            this.tabActiveIndex = this.findTeamIndex(value.GroupName);
+            
           }
-
         },
         error: (error: any) => this.handleError(error),
-        complete: () => { }
-      }
-      );
-    }, 100);
+        complete: () => { this.setupLayoutPanel();}
+      });
+
+    }, 200);
 
   }
 

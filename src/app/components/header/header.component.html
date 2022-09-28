@@ -2,8 +2,8 @@
     <img id="logo" src="../../assets/pictures/icons8-motorbike-helmet-100.png" alt="{{altBrandLogo}}"
         onclick="location.href='/'" />
     <div id="header-middle-section">
-        <nav id="main-nav">
-            <a *ngFor="let org of currentOrganizations"
+        <nav id="main-nav" >
+            <a *ngFor="let org of currentOrganizations" 
                 routerLink="{{ org.OrganizationName | lowercase | removewhitespaces }}"  routerLinkActive="active"> {{
                 org.OrganizationName }} </a>
         </nav>

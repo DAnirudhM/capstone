@@ -43,8 +43,8 @@ export class RegistrationComponent implements OnInit {
 
     if (this.currentSelectedGroup) {
       this.myForm = this.formBuilder.group({
-        teamName: [this.currentSelectedGroup.GroupName, [Validators.required]],
-        phoneNumber: [this.currentSelectedGroup.SponsorPhone, Validators.compose([Validators.required,Validators.pattern('[- +()0-9]+')])],
+        teamName: [{ value: this.currentSelectedGroup.GroupName, disabled: true }, [Validators.required]],
+        phoneNumber: [this.currentSelectedGroup.SponsorPhone, Validators.compose([Validators.required, Validators.pattern('[- +()0-9]+')])],
         sponsorName: [this.currentSelectedGroup.SponsorName, [Validators.required]],
         sponsorEmail: [this.currentSelectedGroup.SponsorEmail, Validators.compose([Validators.required, Validators.email])],
         maxGroupSize: [this.currentSelectedGroup.MaxGroupSize, [Validators.required]]
@@ -53,7 +53,7 @@ export class RegistrationComponent implements OnInit {
     } else {
       this.myForm = this.formBuilder.group({
         teamName: [null, [Validators.required]],
-        phoneNumber: [null, Validators.compose([Validators.required,Validators.pattern('[- +()0-9]+')])],
+        phoneNumber: [null, Validators.compose([Validators.required, Validators.pattern('[- +()0-9]+')])],
         sponsorName: [null, [Validators.required]],
         sponsorEmail: [null, Validators.compose([Validators.required, Validators.email])],
         maxGroupSize: [0, [Validators.required]]
@@ -127,7 +127,7 @@ export class RegistrationComponent implements OnInit {
       "SponsorPhone": formValue.phoneNumber,
       "SponsorEmail": formValue.sponsorEmail,
       "MaxGroupSize": formValue.maxGroupSize,
-      "Members": this.currentSelectedGroup?.Members??[]
+      "Members": this.currentSelectedGroup?.Members ?? []
     }
 
     return groupToAdd;
