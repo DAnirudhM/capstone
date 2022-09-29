@@ -109,12 +109,17 @@ export class ContentComponent implements OnInit {
 
 
   editTeamMember(teamMember: Members) {
-    this.displayTeamRegistrationForm = true;
     this.selectedTeamMember = teamMember;
+    this.displayTeamRegistrationForm = true;
   }
 
 
   onAddNewTeamMember() {
+    this.selectedTeamMember = {
+      MemberId: 0,
+      MemberEmail: '',
+      MemberName: '',
+      MemberPhone: ''};
     this.displayTeamRegistrationForm = true;
   }
 
@@ -141,10 +146,12 @@ export class ContentComponent implements OnInit {
         this.groupsService.deleteGroup(this.selectedGroup[0].GroupId)
           .subscribe({
             next: (value: Groups) => {
-              console.log('Deleted', value);
+              this.messageService.add({ severity: 'info', summary: 'Success', detail: 'Group deleted successdully !' });
             },
             error: (err: any) => console.error(err),
-            complete: () => window.location.reload()
+            complete: () => {
+              window.location.reload();
+            }
           });
       },
       reject: (type: any) => {

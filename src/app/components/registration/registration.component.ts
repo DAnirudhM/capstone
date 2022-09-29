@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
 
   myForm!: FormGroup;
   teamSize!: number;
-  maxTeamSize: number = 10;
+  maxTeamSize: number = 3;
   groupInAnOrg!: Groups[];
   @Output() controlDisplayForm: EventEmitter<boolean> = new EventEmitter();
   @Output() reloadMenuComponent: EventEmitter<boolean> = new EventEmitter();
@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
 
     this.teamSize = 0;
 
-
+    console.log(this.currentSelectedGroup);
     if (this.currentSelectedGroup) {
       this.myForm = this.formBuilder.group({
         teamName: [{ value: this.currentSelectedGroup.GroupName, disabled: true }, [Validators.required]],
@@ -59,10 +59,8 @@ export class RegistrationComponent implements OnInit {
         maxGroupSize: [0, [Validators.required]]
       });
     }
-    //Validators.pattern('[- +()0-9]+')
 
     this.groupsService.getGroups$().subscribe(groups => {
-      console.log(groups);
       this.groupInAnOrg = groups;
     });
   }
@@ -75,7 +73,7 @@ export class RegistrationComponent implements OnInit {
         const group: Groups = this.frameFormToGroup(formValue);
         this.groupsService.updateGroup(group).subscribe({
           next: (value: Groups) => {
-            console.log('Updated', value);
+            this.messageService.add({ severity: 'info', summary: 'Sucess', detail: `${group.GroupName} update sucess !` });
           },
           error: (err: HttpErrorResponse) => {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error });
@@ -90,7 +88,7 @@ export class RegistrationComponent implements OnInit {
         const group: Groups = this.frameFormToGroup(formValue);
         this.groupsService.addGroup(group).subscribe({
           next: (value: Groups) => {
-            console.log('Added', value);
+            this.messageService.add({ severity: 'info', summary: 'Sucess', detail: `${group.GroupName} added successfully !` });
           },
           error: (err: any) => console.error(err),
           complete: () => {
@@ -121,7 +119,7 @@ export class RegistrationComponent implements OnInit {
 
     groupToAdd = {
       "GroupId": maxGroupID,
-      "GroupName": formValue.teamName,
+      "GroupName": formValue.teamName ?? this.currentSelectedGroup.GroupName,
       "OrganizationName": this.sharedService.getOrgNameByRouterURL(this.router.url),
       "SponsorName": formValue.sponsorName,
       "SponsorPhone": formValue.phoneNumber,

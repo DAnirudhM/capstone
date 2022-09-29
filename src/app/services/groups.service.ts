@@ -46,7 +46,7 @@ export class GroupsService {
   refreshGroups(orgId:string): void {
     this.getGroupsByOrganization(orgId)
     .subscribe({
-      next: (value: Groups[]) => this.setGroups(value),
+      next: (value: Groups[]) => {},
       error: (error: any) => console.log(error),
       complete: () => void (0)
     });

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { Groups } from 'src/app/models/groups.model';
 import { Members } from 'src/app/models/members';
 import { MembersService } from 'src/app/services/members.service';
@@ -22,11 +23,12 @@ export class TeamRegistrationComponent implements OnInit {
   @Output() controlDisplayForm: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder,
-    private membersService: MembersService) { }
+    private membersService: MembersService,
+    private messageService: MessageService) { }
 
   ngOnInit(): void {
-
-    if (this.selectedTeamMember) {
+    console.log(this.selectedTeamMember?.MemberId != 0);
+    if (this.selectedTeamMember?.MemberId != 0) {
       this.teamRegistrationForm = this.formBuilder.group({
         memberName: [this.selectedTeamMember.MemberName, [Validators.required]],
         memberEmail: [this.selectedTeamMember.MemberEmail, Validators.compose([Validators.required, Validators.email])],
@@ -53,14 +55,14 @@ export class TeamRegistrationComponent implements OnInit {
     if (this.teamRegistrationForm.valid) {
       const groupID = this.currentSelectedGroup.GroupId;
 
-      if (this.selectedTeamMember) {
+      if (this.selectedTeamMember?.MemberId != 0) {
         console.log('Updating member !!', formValue);
         this.membersService.updateMemeberInGroup(groupID, this.frameFormToMember(formValue))
           .subscribe({
             next: (value: Members) => {
-              console.log(`updated existing memeber of id ${value.MemberId}`);
+              this.messageService.add({ severity: 'info', summary: 'Sucess', detail: `Member updated successfully !` });
             },
-            error: (err: any) => console.error(err),
+            error: (err: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: `Error Updating member !` }); },
             complete: () => {
               this.displayTeamRegisterForm = false;
               this.reloadTeamMembersComponent.emit(true)
@@ -72,9 +74,9 @@ export class TeamRegistrationComponent implements OnInit {
         this.membersService.addMemberToGroup(groupID, this.frameFormToMember(formValue))
           .subscribe({
             next: (value: Members) => {
-              console.log(`added new memeber with id ${value.MemberId}`);
+              this.messageService.add({ severity: 'info', summary: 'Sucess', detail: `Member added successfully !` });
             },
-            error: (err: any) => console.error(err),
+            error: (err: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: `Error Updating member !` }); },
             complete: () => {
               this.displayTeamRegisterForm = false;
               this.reloadTeamMembersComponent.emit(true)
@@ -88,9 +90,8 @@ export class TeamRegistrationComponent implements OnInit {
 
   frameFormToMember(formValue: any): Members {
     let members!: Members;
-    let maxId = Math.max(...(this.currentSelectedGroup.Members ?? []).map(function (member: Members) { return member.MemberId }))+1;
-    
-    if(this.selectedTeamMember){
+    let maxId = Math.max(...(this.currentSelectedGroup.Members ?? []).map(function (member: Members) { return member.MemberId })) + 1;
+    if (this.selectedTeamMember) {
       maxId = this.selectedTeamMember.MemberId
     }
 

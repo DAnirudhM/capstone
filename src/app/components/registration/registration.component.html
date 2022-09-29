@@ -15,15 +15,15 @@
         <span class="p-float-label m-5">
             <input pInputText type="text" id="sponsorName" name="sponsorName" autocomplete="sponsorName"
                 formControlName="sponsorName">
-            <label for="sponsorName" class="block labelTop">Sponsor Name</label>
+            <label for="sponsorName" class="block labelTop">Team Cheif</label>
             <small *ngIf="!myForm.controls['sponsorName'].valid && myForm.controls['sponsorName'].touched"
-                id="teamName-help" class="p-error block">Please enter Sponsor Name.</small>
+                id="teamName-help" class="p-error block">Please enter cheif name.</small>
         </span>
 
         <span class="p-float-label m-5">
             <input pInputText type="text" id="sponsorEmail" name="sponsorEmail" autocomplete="sponsorEmail"
                 formControlName="sponsorEmail" minlength="5">
-            <label for="sponsorEmail" class="block labelTop">Sponsor Email</label>
+            <label for="sponsorEmail" class="block labelTop">Cheif Email</label>
             <small *ngIf="!myForm.controls['sponsorEmail'].valid && myForm.controls['sponsorEmail'].touched"
                 id="teamName-help" class="p-error block">Please enter a valid Email.</small>
         </span>
