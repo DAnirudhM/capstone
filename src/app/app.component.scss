@@ -64,6 +64,24 @@ footer {
   
   }
 
+  @media only screen and (max-width: 500px) {
+
+    .header-footer {
+      flex-direction: column;
+      white-space: nowrap;
+    }
+
+    #main-nav>*{
+        font-size: 1.5rem;
+    }
+    #main-nav>*:not(:last-child) {
+        border-right: 1px solid grey;
+        margin-right: 0.5rem;
+        padding-right: 0.5rem;
+    }
+  
+  }
+
   @media only screen and (max-width: 400px) {
 
     .header-footer {
