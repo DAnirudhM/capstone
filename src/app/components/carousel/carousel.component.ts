@@ -9,15 +9,16 @@ import { OrganizationsService } from 'src/app/services/organizations.service';
 export class CarouselComponent implements OnInit {
 
   imagesPath!: string[];
-  imagesInfo!: {imagePath:string,routeLink:string}[];
+  imagesInfo!: { imagePath: string, routeLink: string }[];
   responsiveOptions: any;
 
   constructor(private organizationsService: OrganizationsService) {
+  }
+
+  ngOnInit(): void { 
     this.setResponsiveness();
     this.setImagesPaths();
   }
-
-  ngOnInit(): void {}
 
   setResponsiveness(): void {
     this.responsiveOptions = [
@@ -39,7 +40,7 @@ export class CarouselComponent implements OnInit {
     ];
   }
 
-  setImagesPaths() {
+  setImagesPaths(): void {
     this.imagesPath = [
       'assets/pictures/mainPage/logo_f1.jpg',
       'assets/pictures/mainPage/logo_f2.jpeg',
@@ -50,23 +51,23 @@ export class CarouselComponent implements OnInit {
 
     this.imagesInfo = [
       {
-        imagePath:'assets/pictures/mainPage/logo_f1.jpg',
-        routeLink:'f-1'
+        imagePath: 'assets/pictures/mainPage/logo_f1.jpg',
+        routeLink: 'f-1'
       },
       {
-        imagePath:'assets/pictures/mainPage/logo_f2.jpeg',
-        routeLink:'f-2'
-      },{
-        imagePath:'assets/pictures/mainPage/logo_f3.jpeg',
-        routeLink:'f-3'
+        imagePath: 'assets/pictures/mainPage/logo_f2.jpeg',
+        routeLink: 'f-2'
+      }, {
+        imagePath: 'assets/pictures/mainPage/logo_f3.jpeg',
+        routeLink: 'f-3'
       },
       {
-        imagePath:'assets/pictures/mainPage/logo_fe.png',
-        routeLink:'f-e'
+        imagePath: 'assets/pictures/mainPage/logo_fe.png',
+        routeLink: 'f-e'
       },
       {
-        imagePath:'assets/pictures/mainPage/logo_mgp.jpeg',
-        routeLink:'motogp'
+        imagePath: 'assets/pictures/mainPage/logo_mgp.jpeg',
+        routeLink: 'motogp'
       }
     ];
   }

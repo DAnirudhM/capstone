@@ -1,15 +1,10 @@
 <div id="menubar">
-    <p-tabMenu class= "m1" [model]="groups"  [activeItem]="groups[tabActiveIndex]" [scrollable]=true
-    onselect=""
-    ></p-tabMenu>
+    <p-tabMenu class="m1" [model]="groups" [activeItem]="groups[tabActiveIndex]" [scrollable]=true onselect="">
+    </p-tabMenu>
     <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success m-2"
-    (click) = "onRegisterGroupClick()"
-    ></button>
+        (click)="onRegisterGroupClick()"></button>
 </div>
 <!-- Registration of group / member -->
-<app-registration
-*ngIf="displayRegisterGroupForm"
-[displayRegisterGroupForm]="displayRegisterGroupForm"
-(controlDisplayForm)="controlDisplayForm($event)"
-(reloadMenuComponent)="reloadMenuComponent($event)"
-></app-registration>
+<app-registration *ngIf="displayRegisterGroupForm" [displayRegisterGroupForm]="displayRegisterGroupForm"
+    (controlDisplayForm)="controlDisplayForm($event)" (reloadMenuComponent)="reloadMenuComponent($event)">
+</app-registration>

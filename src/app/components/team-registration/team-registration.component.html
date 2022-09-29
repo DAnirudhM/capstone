@@ -1,6 +1,5 @@
 <p-dialog header="Member Registration" [(visible)]="displayTeamRegisterForm " [draggable]="false" [modal]="true"
-    (onHide)="onCancel()"
-    [focusOnShow]="false" [style]="{width: '32rem', height: 'auto'}">
+    (onHide)="onCancel()" [focusOnShow]="false" [style]="{width: '32rem', height: 'auto'}">
 
     <form [formGroup]="teamRegistrationForm" (ngSubmit)="onSubmit(teamRegistrationForm.value)">
 
@@ -8,15 +7,17 @@
             <input pInputText type="text" id="memberName" name="memberName" autocomplete="memberName"
                 formControlName="memberName">
             <label for="memberName" class="block labelTop">Member Name</label>
-            <small *ngIf="!teamRegistrationForm.controls['memberName'].valid && teamRegistrationForm.controls['memberName'].touched" id="memberName-help"
-                class="p-error block">Please enter valid Member Name.</small>
+            <small
+                *ngIf="!teamRegistrationForm.controls['memberName'].valid && teamRegistrationForm.controls['memberName'].touched"
+                id="memberName-help" class="p-error block">Please enter valid Member Name.</small>
         </span>
 
         <span class="p-float-label m-5">
             <input pInputText type="text" id="memberEmail" name="memberEmail" autocomplete="memberEmail"
                 formControlName="memberEmail" minlength="5">
             <label for="memberEmail" class="block labelTop">Member Email</label>
-            <small *ngIf="!teamRegistrationForm.controls['memberEmail'].valid && teamRegistrationForm.controls['memberEmail'].touched"
+            <small
+                *ngIf="!teamRegistrationForm.controls['memberEmail'].valid && teamRegistrationForm.controls['memberEmail'].touched"
                 id="memberName-help" class="p-error block">Please enter a valid Email.</small>
         </span>
 
@@ -24,11 +25,13 @@
             <input pInputText type="text" id="memberPhone" name="memberPhone" autocomplete="memberPhone"
                 formControlName="memberPhone" minlength="10" maxlength="10">
             <label for="memberPhone" class="block labelTop">Phone Number</label>
-            <small *ngIf="!teamRegistrationForm.controls['memberPhone'].valid && teamRegistrationForm.controls['memberPhone'].touched"
+            <small
+                *ngIf="!teamRegistrationForm.controls['memberPhone'].valid && teamRegistrationForm.controls['memberPhone'].touched"
                 id="memberName-help" class="p-error block">Please enter a valid phone number.</small>
         </span>
 
-        <button pButton pRipple type="button" label="Submit" (click)="onSubmit(teamRegistrationForm.value)" class="p-button-success m-1"></button>
+        <button pButton pRipple type="button" label="Submit" (click)="onSubmit(teamRegistrationForm.value)"
+            class="p-button-success m-1"></button>
         <button pButton pRipple type="submit" label="Cancel" (click)="onCancel()" class="p-button-danger m-1"></button>
 
     </form>

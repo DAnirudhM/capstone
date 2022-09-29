@@ -13,13 +13,11 @@ export class DescriptionComponent implements OnInit {
 
 
   constructor(private router: Router) {
-    this.setHome();
-    this.setOrgData();
-
   }
 
   ngOnInit(): void {
-
+    this.setHome();
+    this.setOrgData();
   }
 
   setOrgData(): void {

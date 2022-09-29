@@ -9,7 +9,6 @@ import { OrganizationsService } from './services/organizations.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  title = 'capstone-f1';
 
   constructor() { }
 

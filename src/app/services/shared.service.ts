@@ -10,9 +10,7 @@ export class SharedService {
   viewSearchList$!: Subject<Groups>;
 
   constructor() { 
-    //this.viewSearchList$ =  new Subject<Groups>();
     this.viewSearchList$ =  new BehaviorSubject<Groups>(this.group);
-    //this.viewSearchList$ =  new ReplaySubject<Groups>(0);
   }
 
   routeSearch(group:Groups){

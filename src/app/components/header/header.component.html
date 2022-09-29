@@ -14,7 +14,6 @@
         <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-danger p-button-text p-button-lg"
             (click)="openSearchDialog(true)"></button>
     </span>
-
 </header>
 
 <app-search *ngIf="isSearchEnabled" (controlSearchDialogEmitter)="openSearchDialog($event)"></app-search>

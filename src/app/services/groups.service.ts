@@ -10,6 +10,8 @@ import { Organizations } from '../models/organizations.model';
 })
 export class GroupsService {
 
+  private baserURL:string = 'http://127.0.0.1:8082/api/groups';
+
   private group!: Groups[];
   private groups: BehaviorSubject<Groups[]> = new BehaviorSubject<Groups[]>(this.group);
 
@@ -17,7 +19,7 @@ export class GroupsService {
 
 
   getGroupsByOrganization(id: string): Observable<Groups[]> {
-    return this.http.get<Groups[]>(`http://127.0.0.1:8082/api/groups/byorganization/${id}`)
+    return this.http.get<Groups[]>(`${this.baserURL}/byorganization/${id}`)
       .pipe(
         map((response: any) => {
           this.setGroups(response);
@@ -27,7 +29,7 @@ export class GroupsService {
   }
 
   getAllGroups():Observable<Groups[]>{
-    return this.http.get<Groups[]>(`http://127.0.0.1:8082/api/groups`)
+    return this.http.get<Groups[]>(`${this.baserURL}`)
     .pipe(
       map((response: any) => {
         return response;
@@ -55,15 +57,15 @@ export class GroupsService {
 
 
   addGroup(group: Groups): Observable<Groups> {
-    return this.http.post<Groups>(`http://127.0.0.1:8082/api/groups/`, group);
+    return this.http.post<Groups>(`${this.baserURL}`, group);
   }
 
   updateGroup(group: Groups): Observable<Groups> {
-    return this.http.put<Groups>(`http://127.0.0.1:8082/api/groups/`, group);
+    return this.http.put<Groups>(`${this.baserURL}`, group);
   }
 
   deleteGroup(id: number): Observable<Groups> {
-    return this.http.delete<Groups>(`http://127.0.0.1:8082/api/groups/${id}`);
+    return this.http.delete<Groups>(`${this.baserURL}/${id}`);
   }
 
 }

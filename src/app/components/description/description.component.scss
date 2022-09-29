@@ -3,14 +3,12 @@ section {
   flex-direction: row;
   margin: 1rem;
   justify-content: space-between;
-
   div {
     p {
       color: gray;
       font-size: larger;
     }
   }
-
   img {
     width: 40%;
     margin-left: 5rem;
@@ -22,27 +20,20 @@ section {
   section {
     flex-direction: column;
     align-items: center;
-
     img {
       width: 40%;
       margin-left: 0;
     }
   }
-
-
-
 }
 
 @media only screen and (max-width: 400px) {
   section {
     flex-direction: column;
     align-items: center;
-
     img {
       width: 40%;
       margin-left: 0;
     }
   }
-
-
 }

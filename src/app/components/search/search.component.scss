@@ -1,6 +1,8 @@
 :host ::ng-deep {
 
-    .p-input-icon-left>.p-inputtext:hover {
+    .p-input-icon-left>.p-inputtext:hover
+    
+     {
         border-color: red;
     }
 

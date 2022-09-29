@@ -63,10 +63,7 @@ export class TeamRegistrationComponent implements OnInit {
               this.messageService.add({ severity: 'info', summary: 'Sucess', detail: `Member updated successfully !` });
             },
             error: (err: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: `Error Updating member !` }); },
-            complete: () => {
-              this.displayTeamRegisterForm = false;
-              this.reloadTeamMembersComponent.emit(true)
-            }
+            complete: () => this.onComplete()
           });
 
       } else {
@@ -77,15 +74,16 @@ export class TeamRegistrationComponent implements OnInit {
               this.messageService.add({ severity: 'info', summary: 'Sucess', detail: `Member added successfully !` });
             },
             error: (err: any) => { this.messageService.add({ severity: 'error', summary: 'Error', detail: `Error Updating member !` }); },
-            complete: () => {
-              this.displayTeamRegisterForm = false;
-              this.reloadTeamMembersComponent.emit(true)
-            }
+            complete: () => this.onComplete()
           });
       }
 
     }
+  }
 
+  onComplete():void{
+    this.displayTeamRegisterForm = false;
+    this.reloadTeamMembersComponent.emit(true)
   }
 
   frameFormToMember(formValue: any): Members {

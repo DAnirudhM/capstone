@@ -7,6 +7,7 @@ import { Members } from '../models/members';
   providedIn: 'root'
 })
 export class MembersService {
+  private baseURL:string = 'http://127.0.0.1:8082/api/groups';
   private members!: Members[];
 
 
@@ -14,7 +15,7 @@ export class MembersService {
 
   addMemberToGroup(groupID: number, members: Members): Observable<Members> {
 
-    return this.http.post<Members[]>(`http://127.0.0.1:8082/api/groups/${groupID}/members`,members)
+    return this.http.post<Members[]>(`${this.baseURL}/${groupID}/members`,members)
       .pipe(
         map((response: any) => {
           return response;
@@ -23,7 +24,7 @@ export class MembersService {
   }
 
   updateMemeberInGroup(groupID: number, members: Members): Observable<Members>{
-    return this.http.put<Members[]>(`http://127.0.0.1:8082/api/groups/${groupID}/members`,members)
+    return this.http.put<Members[]>(`${this.baseURL}/${groupID}/members`,members)
       .pipe(
         map((response: any) => {
           return response;
@@ -32,7 +33,7 @@ export class MembersService {
   }
 
   removeTeamMember(groupID:number,memberId:number):Observable<Members>{
-    return this.http.delete<Members[]>(`http://127.0.0.1:8082/api/groups/${groupID}/members/${memberId}`)
+    return this.http.delete<Members[]>(`${this.baseURL}/${groupID}/members/${memberId}`)
       .pipe(
         map((response: any) => {
           return response;

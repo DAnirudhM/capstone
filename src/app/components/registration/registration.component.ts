@@ -20,6 +20,7 @@ export class RegistrationComponent implements OnInit {
   teamSize!: number;
   maxTeamSize: number = 3;
   groupInAnOrg!: Groups[];
+
   @Output() controlDisplayForm: EventEmitter<boolean> = new EventEmitter();
   @Output() reloadMenuComponent: EventEmitter<boolean> = new EventEmitter();
 
@@ -39,8 +40,6 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
 
     this.teamSize = 0;
-
-    console.log(this.currentSelectedGroup);
     if (this.currentSelectedGroup) {
       this.myForm = this.formBuilder.group({
         teamName: [{ value: this.currentSelectedGroup.GroupName, disabled: true }, [Validators.required]],
@@ -69,32 +68,23 @@ export class RegistrationComponent implements OnInit {
     console.log('Form submitted ... ', this.myForm.valid);
     if (this.myForm.valid) {
       console.log('updating group');
+      const group: Groups = this.frameFormToGroup(formValue);
       if (this.currentSelectedGroup) {
-        const group: Groups = this.frameFormToGroup(formValue);
         this.groupsService.updateGroup(group).subscribe({
           next: (value: Groups) => {
             this.messageService.add({ severity: 'info', summary: 'Sucess', detail: `${group.GroupName} update sucess !` });
           },
-          error: (err: HttpErrorResponse) => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error });
-          },
-          complete: () => {
-            this.displayRegisterGroupForm = false;
-            this.reloadMenuComponent.emit(true)
-          }
+          error: (err: HttpErrorResponse) => this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error }),
+          complete: () => this.postRegistration()
         });
       } else {
         console.log('Adding group');
-        const group: Groups = this.frameFormToGroup(formValue);
         this.groupsService.addGroup(group).subscribe({
           next: (value: Groups) => {
             this.messageService.add({ severity: 'info', summary: 'Sucess', detail: `${group.GroupName} added successfully !` });
           },
-          error: (err: any) => console.error(err),
-          complete: () => {
-            this.displayRegisterGroupForm = false;
-            this.reloadMenuComponent.emit(true)
-          }
+          error: (err: any) => this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error }),
+          complete: () => this.postRegistration()
         });
       }
     }
@@ -103,6 +93,11 @@ export class RegistrationComponent implements OnInit {
   onCancel() {
     this.myForm.reset();
     this.controlDisplayForm.emit(false);
+  }
+
+  postRegistration(): void {
+    this.displayRegisterGroupForm = false;
+    this.reloadMenuComponent.emit(true)
   }
 
   frameFormToGroup(formValue: any): Groups {

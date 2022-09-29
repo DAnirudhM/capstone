@@ -1,8 +1,7 @@
 <p-dialog header="Team Registration" [(visible)]="displayRegisterGroupForm" [draggable]="false" [modal]="true"
-    (onHide)="this.controlDisplayForm.emit(false)"
-    [focusOnShow]="false" [style]="{width: '32rem', height: 'auto'}">
+    (onHide)="this.controlDisplayForm.emit(false)" [focusOnShow]="false" [style]="{width: '32rem', height: 'auto'}">
 
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <form #reg [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
 
         <span class="p-float-label  m-5">
             <input pInputText type="text" id="teamName" name="teamName" autocomplete="teamName"
@@ -41,7 +40,8 @@
             <p-slider formControlName="maxGroupSize" [(ngModel)]="teamSize" [max]="maxTeamSize"></p-slider>
         </span>
 
-        <button pButton pRipple type="button" label="Submit" (click)="onSubmit(myForm.value)" class="p-button-success m-1"></button>
+        <button pButton pRipple type="button" label="Submit" (click)="onSubmit(myForm.value)"
+            class="p-button-success m-1"></button>
         <button pButton pRipple type="submit" label="Cancel" (click)="onCancel()" class="p-button-danger m-1"></button>
 
     </form>

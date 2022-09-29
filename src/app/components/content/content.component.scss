@@ -1,9 +1,9 @@
-.p-button{
+.p-button {
     height: 0rem;
 }
 
 
-.p-button.p-button-icon-only{
+.p-button.p-button-icon-only {
     width: 2rem;
     color: black;
 }
@@ -15,18 +15,15 @@
         height: 2.5rem;
         display: flex;
         justify-content: space-between;
-        align-items: center;      
+        align-items: center;
 
-        h5{
+        h5 {
             color: white;
         }
-        
     }
 
-    .p-dialog .p-dialog-footer button{
+    .p-dialog .p-dialog-footer button {
         background-color: red;
         color: black;
     }
-
-
 }

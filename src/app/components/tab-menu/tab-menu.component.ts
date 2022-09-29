@@ -47,7 +47,6 @@ export class TabMenuComponent implements OnInit {
         error: (error: any) => this.handleError(error),
         complete: () => { }
       });
-
     }, 200);
 
   }
@@ -64,7 +63,6 @@ export class TabMenuComponent implements OnInit {
 
   tabMenuClicked(event: any): void {
     this.tabActiveIndex = event.item.tabindex;
-
     this.setupLayoutPanel();
   }
 

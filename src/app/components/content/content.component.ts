@@ -21,14 +21,9 @@ export class ContentComponent implements OnInit {
   availableMembers!: Members[];
   displayRegisterGroupForm: boolean = false;
   displayTeamRegistrationForm: boolean = false;
-
   maxGroupSize: number = 0;
   currentMemberSize: number = 0;
-
   selectedGroupName!: string;
-
-
-
 
   @Output() currentSelectGroupEmitter: EventEmitter<Groups> = new EventEmitter();
 
@@ -43,11 +38,7 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.groupsService.getGroups$().subscribe(groups => {
-      this.availableGroups = groups;
-    });
-
-
+    this.getGroups(false, false);
   }
 
   onGroupSelect(event: MenuItem) {
@@ -72,10 +63,8 @@ export class ContentComponent implements OnInit {
 
     this.selectedGroup = [selectGrp];
     this.availableMembers = selectGrp.Members;
-
     this.maxGroupSize = this.selectedGroup?.[0].MaxGroupSize;
     this.currentMemberSize = this.availableMembers?.length;
-
   }
 
   onTeamDetailsEdit() {
@@ -87,11 +76,7 @@ export class ContentComponent implements OnInit {
       console.log('reloading...');
       this.displayRegisterGroupForm = false;
       this.groupsService.refreshGroups(this.sharedService.lookUpOrgID(this.router.url));
-      this.groupsService.getGroups$().subscribe(groups => {
-        this.availableGroups = groups;
-        this.selectedGroup = [this.availableGroups.find(g => this.selectedGroupName === g.GroupName)!];
-      });
-
+      this.getGroups(true, false);
     }
   }
 
@@ -119,7 +104,8 @@ export class ContentComponent implements OnInit {
       MemberId: 0,
       MemberEmail: '',
       MemberName: '',
-      MemberPhone: ''};
+      MemberPhone: ''
+    };
     this.displayTeamRegistrationForm = true;
   }
 
@@ -127,13 +113,7 @@ export class ContentComponent implements OnInit {
     if ($event) {
       this.displayTeamRegistrationForm = false;
       this.groupsService.refreshGroups(this.sharedService.lookUpOrgID(this.router.url));
-      this.groupsService.getGroups$().subscribe(groups => {
-        this.availableGroups = groups;
-        this.selectedGroup = [this.availableGroups.find(g => this.selectedGroupName === g.GroupName)!];
-        this.availableMembers = this.availableGroups.find(g => this.selectedGroupName === g.GroupName)?.Members!;
-        this.maxGroupSize = this.selectedGroup[0].MaxGroupSize;
-        this.currentMemberSize = this.availableMembers.length;
-      });
+      this.getGroups(false, true);
     }
   }
 
@@ -195,6 +175,21 @@ export class ContentComponent implements OnInit {
             this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'You have cancelled' });
             break;
         }
+      }
+    });
+  }
+
+  getGroups(isGroup: boolean, isMember: boolean): void {
+    this.groupsService.getGroups$().subscribe(groups => {
+      this.availableGroups = groups;
+      if (isGroup) {
+        this.selectedGroup = [this.availableGroups.find(g => this.selectedGroupName === g.GroupName)!];
+      }
+      if (isMember) {
+        this.selectedGroup = [this.availableGroups.find(g => this.selectedGroupName === g.GroupName)!];
+        this.availableMembers = this.availableGroups.find(g => this.selectedGroupName === g.GroupName)?.Members!;
+        this.maxGroupSize = this.selectedGroup[0].MaxGroupSize;
+        this.currentMemberSize = this.availableMembers.length;
       }
     });
   }
